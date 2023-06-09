@@ -31,7 +31,7 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 date_default_timezone_set('Europe/London');
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+define('EOL', (PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 date_default_timezone_set('Europe/London');
 mt_srand(1234567890);
@@ -222,7 +222,7 @@ $callEndTime = microtime(true);
 $callTime = $callEndTime - $callStartTime;
 
 echo date('H:i:s') , " File written to " , str_replace('.php', '.xlsx', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
+echo 'Call time to write Workbook was ' , sprintf('%.4f', $callTime) , " seconds" , EOL;
 // Echo memory usage
 echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , " MB" , EOL;
 

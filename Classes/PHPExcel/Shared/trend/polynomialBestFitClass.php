@@ -122,7 +122,7 @@ class PHPExcel_Polynomial_Best_Fit extends PHPExcel_Best_Fit
     public function getSlope($dp = 0)
     {
         if ($dp != 0) {
-            $coefficients = array();
+            $coefficients = [];
             foreach ($this->_slope as $coefficient) {
                 $coefficients[] = round($coefficient, $dp);
             }
@@ -134,7 +134,7 @@ class PHPExcel_Polynomial_Best_Fit extends PHPExcel_Best_Fit
 
     public function getCoefficients($dp = 0)
     {
-        return array_merge(array($this->getIntersect($dp)), $this->getSlope($dp));
+        return array_merge([$this->getIntersect($dp)], $this->getSlope($dp));
     }
 
 
@@ -171,13 +171,13 @@ class PHPExcel_Polynomial_Best_Fit extends PHPExcel_Best_Fit
             }
         }
         for ($i=0; $i < $this->valueCount; ++$i) {
-            $B[$i] = array($yValues[$i]);
+            $B[$i] = [$yValues[$i]];
         }
         $matrixA = new Matrix($A);
         $matrixB = new Matrix($B);
         $C = $matrixA->solve($matrixB);
 
-        $coefficients = array();
+        $coefficients = [];
         for ($i = 0; $i < $C->m; ++$i) {
             $r = $C->get($i, 0);
             if (abs($r) <= pow(10, -9)) {
@@ -204,7 +204,7 @@ class PHPExcel_Polynomial_Best_Fit extends PHPExcel_Best_Fit
      * @param    float[]        $xValues    The set of X-values for this regression
      * @param    boolean        $const
      */
-    public function __construct($order, $yValues, $xValues = array(), $const = true)
+    public function __construct($order, $yValues, $xValues = [], $const = true)
     {
         if (parent::__construct($yValues, $xValues) !== false) {
             if ($order < $this->valueCount) {

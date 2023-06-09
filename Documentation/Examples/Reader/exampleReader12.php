@@ -57,7 +57,7 @@ class chunkReadFilter implements PHPExcel_Reader_IReadFilter
 }
 
 
-echo 'Loading file ',pathinfo($inputFileName,PATHINFO_BASENAME),' using IOFactory with a defined reader type of ',$inputFileType,'<br />';
+echo 'Loading file ',pathinfo($inputFileName, PATHINFO_BASENAME),' using IOFactory with a defined reader type of ',$inputFileType,'<br />';
 /**  Create a new Reader of the type defined in $inputFileType  **/
 $objReader = PHPExcel_IOFactory::createReader($inputFileType);
 
@@ -77,13 +77,13 @@ $objReader->setReadFilter($chunkFilter);
 for ($startRow = 2; $startRow <= 240; $startRow += $chunkSize) {
 	echo 'Loading WorkSheet using configurable filter for headings row 1 and for rows ',$startRow,' to ',($startRow+$chunkSize-1),'<br />';
 	/**  Tell the Read Filter, the limits on which rows we want to read this iteration  **/
-	$chunkFilter->setRows($startRow,$chunkSize);
+	$chunkFilter->setRows($startRow, $chunkSize);
 	/**  Load only the rows that match our filter from $inputFileName to a PHPExcel Object  **/
 	$objPHPExcel = $objReader->load($inputFileName);
 
 	//	Do some processing here
 
-	$sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+	$sheetData = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
 	var_dump($sheetData);
 	echo '<br /><br />';
 }

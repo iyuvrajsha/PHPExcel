@@ -30,7 +30,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+define('EOL', (PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 date_default_timezone_set('Europe/London');
 
@@ -56,7 +56,7 @@ $objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
 echo date('H:i:s') , " Generate an image" , EOL;
 $gdImage = @imagecreatetruecolor(120, 20) or die('Cannot Initialize new GD image stream');
 $textColor = imagecolorallocate($gdImage, 255, 255, 255);
-imagestring($gdImage, 1, 5, 5,  'Created with PHPExcel', $textColor);
+imagestring($gdImage, 1, 5, 5, 'Created with PHPExcel', $textColor);
 
 // Add a drawing to the worksheet
 echo date('H:i:s') , " Add a drawing to the worksheet" , EOL;

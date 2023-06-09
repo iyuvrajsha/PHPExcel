@@ -10,7 +10,7 @@ class Complex
     {
         //    Test for real number, with no imaginary part
         if (is_numeric($complexNumber)) {
-            return array($complexNumber, 0, null);
+            return [$complexNumber, 0, null];
         }
 
         //    Fix silly human errors
@@ -38,7 +38,7 @@ class Complex
             if ($complexParts[1] === '-') {
                 $imaginary = 0 - $imaginary;
             }
-            return array(0, $imaginary, $complexParts[2]);
+            return [0, $imaginary, $complexParts[2]];
         }
 
         //    If we don't have an imaginary part, identify whether it should be +1 or -1...
@@ -56,7 +56,7 @@ class Complex
         }
 
         //    Return real and imaginary parts and suffix as an array, and set a default suffix if user input lazily
-        return array($complexParts[1], $complexParts[4], !empty($complexParts[9]) ? $complexParts[9] : 'i');
+        return [$complexParts[1], $complexParts[4], !empty($complexParts[9]) ? $complexParts[9] : 'i'];
     }    //    function _parseComplex()
 
 
@@ -65,10 +65,10 @@ class Complex
         if ($imaginaryPart === null) {
             if (is_array($realPart)) {
                 //    We have an array of (potentially) real and imaginary parts, and any suffix
-                list ($realPart, $imaginaryPart, $suffix) = array_values($realPart) + array(0.0, 0.0, 'i');
+                 [$realPart, $imaginaryPart, $suffix] = array_values($realPart) + [0.0, 0.0, 'i'];
             } elseif ((is_string($realPart)) || (is_numeric($realPart))) {
                 //    We've been given a string to parse to extract the real and imaginary parts, and any suffix
-                list ($realPart, $imaginaryPart, $suffix) = self::_parseComplex($realPart);
+                 [$realPart, $imaginaryPart, $suffix] = self::_parseComplex($realPart);
             }
         }
 

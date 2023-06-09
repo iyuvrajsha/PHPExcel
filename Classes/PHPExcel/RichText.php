@@ -43,7 +43,7 @@ class PHPExcel_RichText implements PHPExcel_IComparable
     public function __construct(PHPExcel_Cell $pCell = null)
     {
         // Initialise variables
-        $this->richTextElements = array();
+        $this->richTextElements = [];
 
         // Rich-Text string attached to cell?
         if ($pCell !== null) {

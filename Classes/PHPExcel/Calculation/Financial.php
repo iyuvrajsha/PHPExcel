@@ -149,7 +149,7 @@ class PHPExcel_Calculation_Financial
             $principal = $pmt - $interest;
             $capital += $principal;
         }
-        return array($interest, $principal);
+        return [$interest, $principal];
     }
 
 

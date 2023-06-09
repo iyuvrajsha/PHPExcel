@@ -195,9 +195,9 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
         $this->skipBOM();
         $this->checkSeparator();
 
-        $escapeEnclosures = array( "\\" . $this->enclosure, $this->enclosure . $this->enclosure );
+        $escapeEnclosures = [ "\\" . $this->enclosure, $this->enclosure . $this->enclosure ];
 
-        $worksheetInfo = array();
+        $worksheetInfo = [];
         $worksheetInfo[0]['worksheetName'] = 'Worksheet';
         $worksheetInfo[0]['lastColumnLetter'] = 'A';
         $worksheetInfo[0]['lastColumnIndex'] = 0;
@@ -266,9 +266,9 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
         }
         $sheet = $objPHPExcel->setActiveSheetIndex($this->sheetIndex);
 
-        $escapeEnclosures = array( "\\" . $this->enclosure,
-                                   $this->enclosure . $this->enclosure
-                                 );
+        $escapeEnclosures = [ "\\" . $this->enclosure,
+                                   $this->enclosure . $this->enclosure,
+                                 ];
 
         // Set our starting row based on whether we're in contiguous mode or not
         $currentRow = 1;

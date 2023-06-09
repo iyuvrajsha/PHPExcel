@@ -112,7 +112,7 @@ class PHPExcel_Cell_AdvancedValueBinder extends PHPExcel_Cell_DefaultValueBinder
             $thousandsSeparator = PHPExcel_Shared_String::getThousandsSeparator();
             if (preg_match('/^'.preg_quote($currencyCode).' *(\d{1,3}('.preg_quote($thousandsSeparator).'\d{3})*|(\d+))('.preg_quote($decimalSeparator).'\d{2})?$/', $value)) {
                 // Convert value to number
-                $value = (float) trim(str_replace(array($currencyCode, $thousandsSeparator, $decimalSeparator), array('', '', '.'), $value));
+                $value = (float) trim(str_replace([$currencyCode, $thousandsSeparator, $decimalSeparator], ['', '', '.'], $value));
                 $cell->setValueExplicit($value, PHPExcel_Cell_DataType::TYPE_NUMERIC);
                 // Set style
                 $cell->getWorksheet()->getStyle($cell->getCoordinate())
@@ -122,7 +122,7 @@ class PHPExcel_Cell_AdvancedValueBinder extends PHPExcel_Cell_DefaultValueBinder
                 return true;
             } elseif (preg_match('/^\$ *(\d{1,3}(\,\d{3})*|(\d+))(\.\d{2})?$/', $value)) {
                 // Convert value to number
-                $value = (float) trim(str_replace(array('$',','), '', $value));
+                $value = (float) trim(str_replace(['$',','], '', $value));
                 $cell->setValueExplicit($value, PHPExcel_Cell_DataType::TYPE_NUMERIC);
                 // Set style
                 $cell->getWorksheet()->getStyle($cell->getCoordinate())
@@ -133,7 +133,7 @@ class PHPExcel_Cell_AdvancedValueBinder extends PHPExcel_Cell_DefaultValueBinder
             // Check for time without seconds e.g. '9:45', '09:45'
             if (preg_match('/^(\d|[0-1]\d|2[0-3]):[0-5]\d$/', $value)) {
                 // Convert value to number
-                list($h, $m) = explode(':', $value);
+                [$h, $m] = explode(':', $value);
                 $days = $h / 24 + $m / 1440;
                 $cell->setValueExplicit($days, PHPExcel_Cell_DataType::TYPE_NUMERIC);
                 // Set style
@@ -145,7 +145,7 @@ class PHPExcel_Cell_AdvancedValueBinder extends PHPExcel_Cell_DefaultValueBinder
             // Check for time with seconds '9:45:59', '09:45:59'
             if (preg_match('/^(\d|[0-1]\d|2[0-3]):[0-5]\d:[0-5]\d$/', $value)) {
                 // Convert value to number
-                list($h, $m, $s) = explode(':', $value);
+                [$h, $m, $s] = explode(':', $value);
                 $days = $h / 24 + $m / 1440 + $s / 86400;
                 // Convert value to number
                 $cell->setValueExplicit($days, PHPExcel_Cell_DataType::TYPE_NUMERIC);

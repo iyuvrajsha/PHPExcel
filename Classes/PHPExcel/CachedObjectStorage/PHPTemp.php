@@ -55,10 +55,10 @@ class PHPExcel_CachedObjectStorage_PHPTemp extends PHPExcel_CachedObjectStorage_
 
             fseek($this->fileHandle, 0, SEEK_END);
 
-            $this->cellCache[$this->currentObjectID] = array(
+            $this->cellCache[$this->currentObjectID] = [
                 'ptr' => ftell($this->fileHandle),
-                'sz'  => fwrite($this->fileHandle, serialize($this->currentObject))
-            );
+                'sz'  => fwrite($this->fileHandle, serialize($this->currentObject)),
+            ];
             $this->currentCellIsDirty = false;
         }
         $this->currentObjectID = $this->currentObject = null;
@@ -162,7 +162,7 @@ class PHPExcel_CachedObjectStorage_PHPTemp extends PHPExcel_CachedObjectStorage_
             $this->currentObject->detach();
             $this->currentObject = $this->currentObjectID = null;
         }
-        $this->cellCache = array();
+        $this->cellCache = [];
 
         //    detach ourself from the worksheet, so that it can then delete this object successfully
         $this->parent = null;

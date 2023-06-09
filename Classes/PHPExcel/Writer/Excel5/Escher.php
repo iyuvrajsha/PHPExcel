@@ -339,8 +339,8 @@ class PHPExcel_Writer_Excel5_Escher
 
                 // initialize spape offsets
                 $totalSize = 8;
-                $spOffsets = array();
-                $spTypes   = array();
+                $spOffsets = [];
+                $spTypes   = [];
 
                 // treat the inner data
                 foreach ($this->object->getChildren() as $spContainer) {
@@ -434,7 +434,7 @@ class PHPExcel_Writer_Excel5_Escher
                     $recType        = 0xF010;
 
                     // start coordinates
-                    list($column, $row) = PHPExcel_Cell::coordinateFromString($this->object->getStartCoordinates());
+                    [$column, $row] = PHPExcel_Cell::coordinateFromString($this->object->getStartCoordinates());
                     $c1 = PHPExcel_Cell::columnIndexFromString($column) - 1;
                     $r1 = $row - 1;
 
@@ -445,7 +445,7 @@ class PHPExcel_Writer_Excel5_Escher
                     $startOffsetY = $this->object->getStartOffsetY();
 
                     // end coordinates
-                    list($column, $row) = PHPExcel_Cell::coordinateFromString($this->object->getEndCoordinates());
+                    [$column, $row] = PHPExcel_Cell::coordinateFromString($this->object->getEndCoordinates());
                     $c2 = PHPExcel_Cell::columnIndexFromString($column) - 1;
                     $r2 = $row - 1;
 

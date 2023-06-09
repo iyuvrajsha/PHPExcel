@@ -36,8 +36,8 @@
  */
 class PHPExcel_Writer_OpenDocument_Content extends PHPExcel_Writer_OpenDocument_WriterPart
 {
-    const NUMBER_COLS_REPEATED_MAX = 1024;
-    const NUMBER_ROWS_REPEATED_MAX = 1048576;
+    public const NUMBER_COLS_REPEATED_MAX = 1024;
+    public const NUMBER_ROWS_REPEATED_MAX = 1048576;
 
     /**
      * Write content.xml to XML format

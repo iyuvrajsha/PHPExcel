@@ -50,10 +50,10 @@ class testDataFileIterator implements Iterator
         do {
             //    Only take lines that contain test data and that aren't commented out
             $testDataRow = trim(fgets($this->file));
-        } while (($testDataRow > '') && ($testDataRow{0} === '#'));
+        } while (($testDataRow > '') && ($testDataRow[0] === '#'));
 
         //    Discard any comments at the end of the line
-        list($testData) = explode('//', $testDataRow);
+        [$testData] = explode('//', $testDataRow);
 
         //    Split data into an array of individual values and a result
         $dataSet = $this->_getcsv($testData, ',', "'");
@@ -78,7 +78,7 @@ class testDataFileIterator implements Iterator
         fclose($temp);
 
         if ($data === false) {
-            $data = array(null);
+            $data = [null];
         }
 
         return $data;

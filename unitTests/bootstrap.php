@@ -27,12 +27,12 @@ defined('APPLICATION_TESTS_PATH')
 defined('APPLICATION_ENV') || define('APPLICATION_ENV', 'ci');
 
 // Ensure library/ is on include_path
-set_include_path(implode(PATH_SEPARATOR, array(
+set_include_path(implode(PATH_SEPARATOR, [
     realpath(APPLICATION_PATH . '/../Classes'),
     './',
     dirname(__FILE__),
     get_include_path(),
-)));
+]));
 
 
 /**

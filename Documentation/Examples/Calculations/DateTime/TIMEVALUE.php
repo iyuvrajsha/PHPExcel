@@ -32,8 +32,8 @@ $objPHPExcel = new PHPExcel();
 $worksheet = $objPHPExcel->getActiveSheet();
 
 // Add some data
-$testDates = array(	'3:15',	'13:15',	'15:15:15',	'3:15 AM',	'3:15 PM',	'5PM',	'9:15AM',	'13:15AM'
-				  );
+$testDates = [	'3:15',	'13:15',	'15:15:15',	'3:15 AM',	'3:15 PM',	'5PM',	'9:15AM',	'13:15AM',
+				  ];
 $testDateCount = count($testDates);
 
 for($row = 1; $row <= $testDateCount; ++$row) {

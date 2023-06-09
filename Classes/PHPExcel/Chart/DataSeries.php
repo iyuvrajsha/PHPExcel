@@ -35,39 +35,39 @@
  */
 class PHPExcel_Chart_DataSeries
 {
-    const TYPE_BARCHART        = 'barChart';
-    const TYPE_BARCHART_3D     = 'bar3DChart';
-    const TYPE_LINECHART       = 'lineChart';
-    const TYPE_LINECHART_3D    = 'line3DChart';
-    const TYPE_AREACHART       = 'areaChart';
-    const TYPE_AREACHART_3D    = 'area3DChart';
-    const TYPE_PIECHART        = 'pieChart';
-    const TYPE_PIECHART_3D     = 'pie3DChart';
-    const TYPE_DOUGHTNUTCHART  = 'doughnutChart';
-    const TYPE_DONUTCHART      = self::TYPE_DOUGHTNUTCHART;    //    Synonym
-    const TYPE_SCATTERCHART    = 'scatterChart';
-    const TYPE_SURFACECHART    = 'surfaceChart';
-    const TYPE_SURFACECHART_3D = 'surface3DChart';
-    const TYPE_RADARCHART      = 'radarChart';
-    const TYPE_BUBBLECHART     = 'bubbleChart';
-    const TYPE_STOCKCHART      = 'stockChart';
-    const TYPE_CANDLECHART     = self::TYPE_STOCKCHART;       //    Synonym
+    public const TYPE_BARCHART        = 'barChart';
+    public const TYPE_BARCHART_3D     = 'bar3DChart';
+    public const TYPE_LINECHART       = 'lineChart';
+    public const TYPE_LINECHART_3D    = 'line3DChart';
+    public const TYPE_AREACHART       = 'areaChart';
+    public const TYPE_AREACHART_3D    = 'area3DChart';
+    public const TYPE_PIECHART        = 'pieChart';
+    public const TYPE_PIECHART_3D     = 'pie3DChart';
+    public const TYPE_DOUGHTNUTCHART  = 'doughnutChart';
+    public const TYPE_DONUTCHART      = self::TYPE_DOUGHTNUTCHART;    //    Synonym
+    public const TYPE_SCATTERCHART    = 'scatterChart';
+    public const TYPE_SURFACECHART    = 'surfaceChart';
+    public const TYPE_SURFACECHART_3D = 'surface3DChart';
+    public const TYPE_RADARCHART      = 'radarChart';
+    public const TYPE_BUBBLECHART     = 'bubbleChart';
+    public const TYPE_STOCKCHART      = 'stockChart';
+    public const TYPE_CANDLECHART     = self::TYPE_STOCKCHART;       //    Synonym
 
-    const GROUPING_CLUSTERED       = 'clustered';
-    const GROUPING_STACKED         = 'stacked';
-    const GROUPING_PERCENT_STACKED = 'percentStacked';
-    const GROUPING_STANDARD        = 'standard';
+    public const GROUPING_CLUSTERED       = 'clustered';
+    public const GROUPING_STACKED         = 'stacked';
+    public const GROUPING_PERCENT_STACKED = 'percentStacked';
+    public const GROUPING_STANDARD        = 'standard';
 
-    const DIRECTION_BAR        = 'bar';
-    const DIRECTION_HORIZONTAL = self::DIRECTION_BAR;
-    const DIRECTION_COL        = 'col';
-    const DIRECTION_COLUMN     = self::DIRECTION_COL;
-    const DIRECTION_VERTICAL   = self::DIRECTION_COL;
+    public const DIRECTION_BAR        = 'bar';
+    public const DIRECTION_HORIZONTAL = self::DIRECTION_BAR;
+    public const DIRECTION_COL        = 'col';
+    public const DIRECTION_COLUMN     = self::DIRECTION_COL;
+    public const DIRECTION_VERTICAL   = self::DIRECTION_COL;
 
-    const STYLE_LINEMARKER   = 'lineMarker';
-    const STYLE_SMOOTHMARKER = 'smoothMarker';
-    const STYLE_MARKER       = 'marker';
-    const STYLE_FILLED       = 'filled';
+    public const STYLE_LINEMARKER   = 'lineMarker';
+    public const STYLE_SMOOTHMARKER = 'smoothMarker';
+    public const STYLE_MARKER       = 'marker';
+    public const STYLE_FILLED       = 'filled';
 
 
     /**
@@ -103,21 +103,21 @@ class PHPExcel_Chart_DataSeries
      *
      * @var array of integer
      */
-    private $plotOrder = array();
+    private $plotOrder = [];
 
     /**
      * Plot Label
      *
      * @var array of PHPExcel_Chart_DataSeriesValues
      */
-    private $plotLabel = array();
+    private $plotLabel = [];
 
     /**
      * Plot Category
      *
      * @var array of PHPExcel_Chart_DataSeriesValues
      */
-    private $plotCategory = array();
+    private $plotCategory = [];
 
     /**
      * Smooth Line
@@ -131,12 +131,12 @@ class PHPExcel_Chart_DataSeries
      *
      * @var array of PHPExcel_Chart_DataSeriesValues
      */
-    private $plotValues = array();
+    private $plotValues = [];
 
     /**
      * Create a new PHPExcel_Chart_DataSeries
      */
-    public function __construct($plotType = null, $plotGrouping = null, $plotOrder = array(), $plotLabel = array(), $plotCategory = array(), $plotValues = array(), $plotDirection = null, $smoothLine = null, $plotStyle = null)
+    public function __construct($plotType = null, $plotGrouping = null, $plotOrder = [], $plotLabel = [], $plotCategory = [], $plotValues = [], $plotDirection = null, $smoothLine = null, $plotStyle = null)
     {
         $this->plotType = $plotType;
         $this->plotGrouping = $plotGrouping;

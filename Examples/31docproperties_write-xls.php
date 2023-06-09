@@ -30,7 +30,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+define('EOL', (PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 date_default_timezone_set('Europe/London');
 
@@ -50,7 +50,7 @@ $objPHPExcel = $objPHPExcelReader->load($inputFileName);
 
 $callEndTime = microtime(true);
 $callTime = $callEndTime - $callStartTime;
-echo 'Call time to read Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
+echo 'Call time to read Workbook was ' , sprintf('%.4f', $callTime) , " seconds" , EOL;
 // Echo memory usage
 echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , " MB" , EOL;
 
@@ -83,11 +83,11 @@ echo date('H:i:s') , " Get properties" , EOL;
 
 echo 'Core Properties:' , EOL;
 echo '    Created by - ' , $objPHPExcel->getProperties()->getCreator() , EOL;
-echo '    Created on - ' , date('d-M-Y',$objPHPExcel->getProperties()->getCreated()) , ' at ' ,
-                       date('H:i:s',$objPHPExcel->getProperties()->getCreated()) , EOL;
+echo '    Created on - ' , date('d-M-Y', $objPHPExcel->getProperties()->getCreated()) , ' at ' ,
+                       date('H:i:s', $objPHPExcel->getProperties()->getCreated()) , EOL;
 echo '    Last Modified by - ' , $objPHPExcel->getProperties()->getLastModifiedBy() , EOL;
-echo '    Last Modified on - ' , date('d-M-Y',$objPHPExcel->getProperties()->getModified()) , ' at ' ,
-                             date('H:i:s',$objPHPExcel->getProperties()->getModified()) , EOL;
+echo '    Last Modified on - ' , date('d-M-Y', $objPHPExcel->getProperties()->getModified()) , ' at ' ,
+                             date('H:i:s', $objPHPExcel->getProperties()->getModified()) , EOL;
 echo '    Title - ' , $objPHPExcel->getProperties()->getTitle() , EOL;
 echo '    Subject - ' , $objPHPExcel->getProperties()->getSubject() , EOL;
 echo '    Description - ' , $objPHPExcel->getProperties()->getDescription() , EOL;
@@ -107,7 +107,7 @@ foreach($customProperties as $customProperty) {
 	$propertyType = $objPHPExcel->getProperties()->getCustomPropertyType($customProperty);
 	echo '    ' , $customProperty , ' - (' , $propertyType , ') - ';
 	if ($propertyType == PHPExcel_DocumentProperties::PROPERTY_TYPE_DATE) {
-		echo date('d-M-Y H:i:s',$propertyValue) , EOL;
+		echo date('d-M-Y H:i:s', $propertyValue) , EOL;
 	} elseif ($propertyType == PHPExcel_DocumentProperties::PROPERTY_TYPE_BOOLEAN) {
 		echo (($propertyValue) ? 'TRUE' : 'FALSE') , EOL;
 	} else {

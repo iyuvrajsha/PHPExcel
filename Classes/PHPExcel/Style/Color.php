@@ -28,16 +28,16 @@
 class PHPExcel_Style_Color extends PHPExcel_Style_Supervisor implements PHPExcel_IComparable
 {
     /* Colors */
-    const COLOR_BLACK      = 'FF000000';
-    const COLOR_WHITE      = 'FFFFFFFF';
-    const COLOR_RED        = 'FFFF0000';
-    const COLOR_DARKRED    = 'FF800000';
-    const COLOR_BLUE       = 'FF0000FF';
-    const COLOR_DARKBLUE   = 'FF000080';
-    const COLOR_GREEN      = 'FF00FF00';
-    const COLOR_DARKGREEN  = 'FF008000';
-    const COLOR_YELLOW     = 'FFFFFF00';
-    const COLOR_DARKYELLOW = 'FF808000';
+    public const COLOR_BLACK      = 'FF000000';
+    public const COLOR_WHITE      = 'FFFFFFFF';
+    public const COLOR_RED        = 'FFFF0000';
+    public const COLOR_DARKRED    = 'FF800000';
+    public const COLOR_BLUE       = 'FF0000FF';
+    public const COLOR_DARKBLUE   = 'FF000080';
+    public const COLOR_GREEN      = 'FF00FF00';
+    public const COLOR_DARKGREEN  = 'FF008000';
+    public const COLOR_YELLOW     = 'FFFFFF00';
+    public const COLOR_DARKYELLOW = 'FF808000';
 
     /**
      * Indexed colors array
@@ -135,7 +135,7 @@ class PHPExcel_Style_Color extends PHPExcel_Style_Supervisor implements PHPExcel
                 break;
 
         }
-        return $this->parent->getStyleArray(array($key => $array));
+        return $this->parent->getStyleArray([$key => $array]);
     }
 
     /**
@@ -193,7 +193,7 @@ class PHPExcel_Style_Color extends PHPExcel_Style_Supervisor implements PHPExcel
             $pValue = PHPExcel_Style_Color::COLOR_BLACK;
         }
         if ($this->isSupervisor) {
-            $styleArray = $this->getStyleArray(array('argb' => $pValue));
+            $styleArray = $this->getStyleArray(['argb' => $pValue]);
             $this->getActiveSheet()->getStyle($this->getSelectedCells())->applyFromArray($styleArray);
         } else {
             $this->argb = $pValue;
@@ -226,7 +226,7 @@ class PHPExcel_Style_Color extends PHPExcel_Style_Supervisor implements PHPExcel
             $pValue = '000000';
         }
         if ($this->isSupervisor) {
-            $styleArray = $this->getStyleArray(array('argb' => 'FF' . $pValue));
+            $styleArray = $this->getStyleArray(['argb' => 'FF' . $pValue]);
             $this->getActiveSheet()->getStyle($this->getSelectedCells())->applyFromArray($styleArray);
         } else {
             $this->argb = 'FF' . $pValue;
@@ -355,7 +355,7 @@ class PHPExcel_Style_Color extends PHPExcel_Style_Supervisor implements PHPExcel
 
         // Indexed colors
         if (is_null(self::$indexedColors)) {
-            self::$indexedColors = array(
+            self::$indexedColors = [
                     1    => 'FF000000',    //    System Colour #1 - Black
                     2    => 'FFFFFFFF',    //    System Colour #2 - White
                     3    => 'FFFF0000',    //    System Colour #3 - Red
@@ -411,8 +411,8 @@ class PHPExcel_Style_Color extends PHPExcel_Style_Supervisor implements PHPExcel
                     53    => 'FF993300',    //    Standard Colour #53
                     54    => 'FF993366',    //    Standard Colour #54
                     55    => 'FF333399',    //    Standard Colour #55
-                    56    => 'FF333333'    //    Standard Colour #56
-                );
+                    56    => 'FF333333',    //    Standard Colour #56
+                ];
         }
 
         if (array_key_exists($pIndex, self::$indexedColors)) {

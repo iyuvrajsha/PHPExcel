@@ -14,10 +14,10 @@ class DataSeriesValuesTest extends PHPUnit_Framework_TestCase
 
     public function testSetDataType()
     {
-        $dataTypeValues = array(
+        $dataTypeValues = [
             'Number',
-            'String'
-        );
+            'String',
+        ];
 
         $testInstance = new PHPExcel_Chart_DataSeriesValues;
 

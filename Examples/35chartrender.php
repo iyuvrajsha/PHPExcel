@@ -6,7 +6,7 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 date_default_timezone_set('Europe/London');
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+define('EOL', (PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 date_default_timezone_set('Europe/London');
 
@@ -51,9 +51,9 @@ $rendererLibraryPath = '/php/libraries/Charts/' . $rendererLibrary;
 
 
 if (!PHPExcel_Settings::setChartRenderer(
-		$rendererName,
-		$rendererLibraryPath
-	)) {
+    $rendererName,
+    $rendererLibraryPath
+)) {
 	die(
 		'NOTICE: Please set the $rendererName and $rendererLibraryPath values' .
 		EOL .
@@ -66,7 +66,7 @@ $inputFileType = 'Excel2007';
 $inputFileNames = 'templates/32readwrite*[0-9].xlsx';
 
 	if ((isset($argc)) && ($argc > 1)) {
-	$inputFileNames = array();
+	$inputFileNames = [];
 	for($i = 1; $i < $argc; ++$i) {
 		$inputFileNames[] = dirname(__FILE__) . '/templates/' . $argv[$i];
 	}
@@ -101,14 +101,14 @@ foreach($inputFileNames as $inputFileName) {
 			foreach($chartNames as $i => $chartName) {
 				$chart = $worksheet->getChartByName($chartName);
 				if (!is_null($chart->getTitle())) {
-					$caption = '"' . implode(' ',$chart->getTitle()->getCaption()) . '"';
+					$caption = '"' . implode(' ', $chart->getTitle()->getCaption()) . '"';
 				} else {
 					$caption = 'Untitled';
 				}
 				echo '    ' , $chartName , ' - ' , $caption , EOL;
-				echo str_repeat(' ',strlen($chartName)+3);
+				echo str_repeat(' ', strlen($chartName)+3);
 
-				$jpegFile = '35'.str_replace('.xlsx', '.jpg', substr($inputFileNameShort,2));
+				$jpegFile = '35'.str_replace('.xlsx', '.jpg', substr($inputFileNameShort, 2));
 				if (file_exists($jpegFile)) {
 					unlink($jpegFile);
 				}

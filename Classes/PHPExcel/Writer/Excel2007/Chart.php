@@ -262,7 +262,7 @@ class PHPExcel_Writer_Excel2007_Chart extends PHPExcel_Writer_Excel2007_WriterPa
                 //    Line only, Line3D can't be smoothed
 
                 $objWriter->startElement('c:smooth');
-                $objWriter->writeAttribute('val', (integer) $plotGroup->getSmoothLine());
+                $objWriter->writeAttribute('val', (int) $plotGroup->getSmoothLine());
                 $objWriter->endElement();
             } elseif (($chartType === PHPExcel_Chart_DataSeries::TYPE_BARCHART) ||($chartType === PHPExcel_Chart_DataSeries::TYPE_BARCHART_3D)) {
                 $objWriter->startElement('c:gapWidth');
@@ -596,17 +596,17 @@ class PHPExcel_Writer_Excel2007_Chart extends PHPExcel_Writer_Excel2007_WriterPa
                 $objWriter->endElement();
             }
 
-            if (!is_null($majorGridlines->getLineStyleProperty(array('arrow', 'head', 'type')))) {
+            if (!is_null($majorGridlines->getLineStyleProperty(['arrow', 'head', 'type']))) {
                 $objWriter->startElement('a:headEnd');
-                $objWriter->writeAttribute('type', $majorGridlines->getLineStyleProperty(array('arrow', 'head', 'type')));
+                $objWriter->writeAttribute('type', $majorGridlines->getLineStyleProperty(['arrow', 'head', 'type']));
                 $objWriter->writeAttribute('w', $majorGridlines->getLineStyleArrowParameters('head', 'w'));
                 $objWriter->writeAttribute('len', $majorGridlines->getLineStyleArrowParameters('head', 'len'));
                 $objWriter->endElement();
             }
 
-            if (!is_null($majorGridlines->getLineStyleProperty(array('arrow', 'end', 'type')))) {
+            if (!is_null($majorGridlines->getLineStyleProperty(['arrow', 'end', 'type']))) {
                 $objWriter->startElement('a:tailEnd');
-                $objWriter->writeAttribute('type', $majorGridlines->getLineStyleProperty(array('arrow', 'end', 'type')));
+                $objWriter->writeAttribute('type', $majorGridlines->getLineStyleProperty(['arrow', 'end', 'type']));
                 $objWriter->writeAttribute('w', $majorGridlines->getLineStyleArrowParameters('end', 'w'));
                 $objWriter->writeAttribute('len', $majorGridlines->getLineStyleArrowParameters('end', 'len'));
                 $objWriter->endElement();
@@ -641,23 +641,23 @@ class PHPExcel_Writer_Excel2007_Chart extends PHPExcel_Writer_Excel2007_WriterPa
             if (!is_null($majorGridlines->getShadowProperty('algn'))) {
                 $objWriter->writeAttribute('algn', $majorGridlines->getShadowProperty('algn'));
             }
-            if (!is_null($majorGridlines->getShadowProperty(array('size', 'sx')))) {
-                $objWriter->writeAttribute('sx', $majorGridlines->getShadowProperty(array('size', 'sx')));
+            if (!is_null($majorGridlines->getShadowProperty(['size', 'sx']))) {
+                $objWriter->writeAttribute('sx', $majorGridlines->getShadowProperty(['size', 'sx']));
             }
-            if (!is_null($majorGridlines->getShadowProperty(array('size', 'sy')))) {
-                $objWriter->writeAttribute('sy', $majorGridlines->getShadowProperty(array('size', 'sy')));
+            if (!is_null($majorGridlines->getShadowProperty(['size', 'sy']))) {
+                $objWriter->writeAttribute('sy', $majorGridlines->getShadowProperty(['size', 'sy']));
             }
-            if (!is_null($majorGridlines->getShadowProperty(array('size', 'kx')))) {
-                $objWriter->writeAttribute('kx', $majorGridlines->getShadowProperty(array('size', 'kx')));
+            if (!is_null($majorGridlines->getShadowProperty(['size', 'kx']))) {
+                $objWriter->writeAttribute('kx', $majorGridlines->getShadowProperty(['size', 'kx']));
             }
             if (!is_null($majorGridlines->getShadowProperty('rotWithShape'))) {
                 $objWriter->writeAttribute('rotWithShape', $majorGridlines->getShadowProperty('rotWithShape'));
             }
-            $objWriter->startElement("a:{$majorGridlines->getShadowProperty(array('color', 'type'))}");
-            $objWriter->writeAttribute('val', $majorGridlines->getShadowProperty(array('color', 'value')));
+            $objWriter->startElement("a:{$majorGridlines->getShadowProperty(['color', 'type'])}");
+            $objWriter->writeAttribute('val', $majorGridlines->getShadowProperty(['color', 'value']));
 
             $objWriter->startElement('a:alpha');
-            $objWriter->writeAttribute('val', $majorGridlines->getShadowProperty(array('color', 'alpha')));
+            $objWriter->writeAttribute('val', $majorGridlines->getShadowProperty(['color', 'alpha']));
             $objWriter->endElement(); //end alpha
 
             $objWriter->endElement(); //end color:type
@@ -703,17 +703,17 @@ class PHPExcel_Writer_Excel2007_Chart extends PHPExcel_Writer_Excel2007_WriterPa
                     $objWriter->endElement();
                 }
 
-                if (!is_null($minorGridlines->getLineStyleProperty(array('arrow', 'head', 'type')))) {
+                if (!is_null($minorGridlines->getLineStyleProperty(['arrow', 'head', 'type']))) {
                     $objWriter->startElement('a:headEnd');
-                    $objWriter->writeAttribute('type', $minorGridlines->getLineStyleProperty(array('arrow', 'head', 'type')));
+                    $objWriter->writeAttribute('type', $minorGridlines->getLineStyleProperty(['arrow', 'head', 'type']));
                     $objWriter->writeAttribute('w', $minorGridlines->getLineStyleArrowParameters('head', 'w'));
                     $objWriter->writeAttribute('len', $minorGridlines->getLineStyleArrowParameters('head', 'len'));
                     $objWriter->endElement();
                 }
 
-                if (!is_null($minorGridlines->getLineStyleProperty(array('arrow', 'end', 'type')))) {
+                if (!is_null($minorGridlines->getLineStyleProperty(['arrow', 'end', 'type']))) {
                     $objWriter->startElement('a:tailEnd');
-                    $objWriter->writeAttribute('type', $minorGridlines->getLineStyleProperty(array('arrow', 'end', 'type')));
+                    $objWriter->writeAttribute('type', $minorGridlines->getLineStyleProperty(['arrow', 'end', 'type']));
                     $objWriter->writeAttribute('w', $minorGridlines->getLineStyleArrowParameters('end', 'w'));
                     $objWriter->writeAttribute('len', $minorGridlines->getLineStyleArrowParameters('end', 'len'));
                     $objWriter->endElement();
@@ -749,22 +749,22 @@ class PHPExcel_Writer_Excel2007_Chart extends PHPExcel_Writer_Excel2007_WriterPa
                 if (!is_null($minorGridlines->getShadowProperty('algn'))) {
                     $objWriter->writeAttribute('algn', $minorGridlines->getShadowProperty('algn'));
                 }
-                if (!is_null($minorGridlines->getShadowProperty(array('size', 'sx')))) {
-                    $objWriter->writeAttribute('sx', $minorGridlines->getShadowProperty(array('size', 'sx')));
+                if (!is_null($minorGridlines->getShadowProperty(['size', 'sx']))) {
+                    $objWriter->writeAttribute('sx', $minorGridlines->getShadowProperty(['size', 'sx']));
                 }
-                if (!is_null($minorGridlines->getShadowProperty(array('size', 'sy')))) {
-                    $objWriter->writeAttribute('sy', $minorGridlines->getShadowProperty(array('size', 'sy')));
+                if (!is_null($minorGridlines->getShadowProperty(['size', 'sy']))) {
+                    $objWriter->writeAttribute('sy', $minorGridlines->getShadowProperty(['size', 'sy']));
                 }
-                if (!is_null($minorGridlines->getShadowProperty(array('size', 'kx')))) {
-                    $objWriter->writeAttribute('kx', $minorGridlines->getShadowProperty(array('size', 'kx')));
+                if (!is_null($minorGridlines->getShadowProperty(['size', 'kx']))) {
+                    $objWriter->writeAttribute('kx', $minorGridlines->getShadowProperty(['size', 'kx']));
                 }
                 if (!is_null($minorGridlines->getShadowProperty('rotWithShape'))) {
                     $objWriter->writeAttribute('rotWithShape', $minorGridlines->getShadowProperty('rotWithShape'));
                 }
-                $objWriter->startElement("a:{$minorGridlines->getShadowProperty(array('color', 'type'))}");
-                $objWriter->writeAttribute('val', $minorGridlines->getShadowProperty(array('color', 'value')));
+                $objWriter->startElement("a:{$minorGridlines->getShadowProperty(['color', 'type'])}");
+                $objWriter->writeAttribute('val', $minorGridlines->getShadowProperty(['color', 'value']));
                 $objWriter->startElement('a:alpha');
-                $objWriter->writeAttribute('val', $minorGridlines->getShadowProperty(array('color', 'alpha')));
+                $objWriter->writeAttribute('val', $minorGridlines->getShadowProperty(['color', 'alpha']));
                 $objWriter->endElement(); //end alpha
                 $objWriter->endElement(); //end color:type
                 $objWriter->endElement(); //end shadow
@@ -882,17 +882,17 @@ class PHPExcel_Writer_Excel2007_Chart extends PHPExcel_Writer_Excel2007_WriterPa
             $objWriter->endElement();
         }
 
-        if (!is_null($xAxis->getLineStyleProperty(array('arrow', 'head', 'type')))) {
+        if (!is_null($xAxis->getLineStyleProperty(['arrow', 'head', 'type']))) {
             $objWriter->startElement('a:headEnd');
-            $objWriter->writeAttribute('type', $xAxis->getLineStyleProperty(array('arrow', 'head', 'type')));
+            $objWriter->writeAttribute('type', $xAxis->getLineStyleProperty(['arrow', 'head', 'type']));
             $objWriter->writeAttribute('w', $xAxis->getLineStyleArrowWidth('head'));
             $objWriter->writeAttribute('len', $xAxis->getLineStyleArrowLength('head'));
             $objWriter->endElement();
         }
 
-        if (!is_null($xAxis->getLineStyleProperty(array('arrow', 'end', 'type')))) {
+        if (!is_null($xAxis->getLineStyleProperty(['arrow', 'end', 'type']))) {
             $objWriter->startElement('a:tailEnd');
-            $objWriter->writeAttribute('type', $xAxis->getLineStyleProperty(array('arrow', 'end', 'type')));
+            $objWriter->writeAttribute('type', $xAxis->getLineStyleProperty(['arrow', 'end', 'type']));
             $objWriter->writeAttribute('w', $xAxis->getLineStyleArrowWidth('end'));
             $objWriter->writeAttribute('len', $xAxis->getLineStyleArrowLength('end'));
             $objWriter->endElement();
@@ -905,10 +905,10 @@ class PHPExcel_Writer_Excel2007_Chart extends PHPExcel_Writer_Excel2007_WriterPa
         if (!is_null($xAxis->getGlowProperty('size'))) {
             $objWriter->startElement('a:glow');
             $objWriter->writeAttribute('rad', $xAxis->getGlowProperty('size'));
-            $objWriter->startElement("a:{$xAxis->getGlowProperty(array('color','type'))}");
-            $objWriter->writeAttribute('val', $xAxis->getGlowProperty(array('color','value')));
+            $objWriter->startElement("a:{$xAxis->getGlowProperty(['color','type'])}");
+            $objWriter->writeAttribute('val', $xAxis->getGlowProperty(['color','value']));
             $objWriter->startElement('a:alpha');
-            $objWriter->writeAttribute('val', $xAxis->getGlowProperty(array('color','alpha')));
+            $objWriter->writeAttribute('val', $xAxis->getGlowProperty(['color','alpha']));
             $objWriter->endElement();
             $objWriter->endElement();
             $objWriter->endElement();
@@ -929,23 +929,23 @@ class PHPExcel_Writer_Excel2007_Chart extends PHPExcel_Writer_Excel2007_WriterPa
             if (!is_null($xAxis->getShadowProperty('algn'))) {
                 $objWriter->writeAttribute('algn', $xAxis->getShadowProperty('algn'));
             }
-            if (!is_null($xAxis->getShadowProperty(array('size','sx')))) {
-                $objWriter->writeAttribute('sx', $xAxis->getShadowProperty(array('size','sx')));
+            if (!is_null($xAxis->getShadowProperty(['size','sx']))) {
+                $objWriter->writeAttribute('sx', $xAxis->getShadowProperty(['size','sx']));
             }
-            if (!is_null($xAxis->getShadowProperty(array('size','sy')))) {
-                $objWriter->writeAttribute('sy', $xAxis->getShadowProperty(array('size','sy')));
+            if (!is_null($xAxis->getShadowProperty(['size','sy']))) {
+                $objWriter->writeAttribute('sy', $xAxis->getShadowProperty(['size','sy']));
             }
-            if (!is_null($xAxis->getShadowProperty(array('size','kx')))) {
-                $objWriter->writeAttribute('kx', $xAxis->getShadowProperty(array('size','kx')));
+            if (!is_null($xAxis->getShadowProperty(['size','kx']))) {
+                $objWriter->writeAttribute('kx', $xAxis->getShadowProperty(['size','kx']));
             }
             if (!is_null($xAxis->getShadowProperty('rotWithShape'))) {
                 $objWriter->writeAttribute('rotWithShape', $xAxis->getShadowProperty('rotWithShape'));
             }
 
-            $objWriter->startElement("a:{$xAxis->getShadowProperty(array('color','type'))}");
-            $objWriter->writeAttribute('val', $xAxis->getShadowProperty(array('color','value')));
+            $objWriter->startElement("a:{$xAxis->getShadowProperty(['color','type'])}");
+            $objWriter->writeAttribute('val', $xAxis->getShadowProperty(['color','value']));
             $objWriter->startElement('a:alpha');
-            $objWriter->writeAttribute('val', $xAxis->getShadowProperty(array('color','alpha')));
+            $objWriter->writeAttribute('val', $xAxis->getShadowProperty(['color','alpha']));
             $objWriter->endElement();
             $objWriter->endElement();
 
@@ -1017,9 +1017,9 @@ class PHPExcel_Writer_Excel2007_Chart extends PHPExcel_Writer_Excel2007_WriterPa
         $groupCount = $plotArea->getPlotGroupCount();
 
         if ($groupCount == 1) {
-            $chartType = array($plotArea->getPlotGroupByIndex(0)->getPlotType());
+            $chartType = [$plotArea->getPlotGroupByIndex(0)->getPlotType()];
         } else {
-            $chartTypes = array();
+            $chartTypes = [];
             for ($i = 0; $i < $groupCount; ++$i) {
                 $chartTypes[] = $plotArea->getPlotGroupByIndex($i)->getPlotType();
             }

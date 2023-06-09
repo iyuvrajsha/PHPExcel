@@ -28,8 +28,8 @@
 class PHPExcel_Shared_Date
 {
     /** constants */
-    const CALENDAR_WINDOWS_1900 = 1900;        //    Base date of 1st Jan 1900 = 1.0
-    const CALENDAR_MAC_1904 = 1904;            //    Base date of 2nd Jan 1904 = 1.0
+    public const CALENDAR_WINDOWS_1900 = 1900;        //    Base date of 1st Jan 1900 = 1.0
+    public const CALENDAR_MAC_1904 = 1904;            //    Base date of 2nd Jan 1904 = 1.0
 
     /*
      * Names of the months of the year, indexed by shortname
@@ -38,7 +38,7 @@ class PHPExcel_Shared_Date
      * @public
      * @var    string[]
      */
-    public static $monthNames = array(
+    public static $monthNames = [
         'Jan' => 'January',
         'Feb' => 'February',
         'Mar' => 'March',
@@ -51,7 +51,7 @@ class PHPExcel_Shared_Date
         'Oct' => 'October',
         'Nov' => 'November',
         'Dec' => 'December',
-    );
+    ];
 
     /*
      * Names of the months of the year, indexed by shortname
@@ -60,12 +60,12 @@ class PHPExcel_Shared_Date
      * @public
      * @var    string[]
      */
-    public static $numberSuffixes = array(
+    public static $numberSuffixes = [
         'st',
         'nd',
         'rd',
         'th',
-    );
+    ];
 
     /*
      * Base calendar year to use for calculations
@@ -129,13 +129,13 @@ class PHPExcel_Shared_Date
             $utcDays = $dateValue - $myexcelBaseDate;
             $returnValue = round($utcDays * 86400);
             if (($returnValue <= PHP_INT_MAX) && ($returnValue >= -PHP_INT_MAX)) {
-                $returnValue = (integer) $returnValue;
+                $returnValue = (int) $returnValue;
             }
         } else {
             $hours = round($dateValue * 24);
             $mins = round($dateValue * 1440) - round($hours * 60);
             $secs = round($dateValue * 86400) - round($hours * 3600) - round($mins * 60);
-            $returnValue = (integer) gmmktime($hours, $mins, $secs);
+            $returnValue = (int) gmmktime($hours, $mins, $secs);
         }
 
         $timezoneAdjustment = ($adjustToTimezone) ?
@@ -411,7 +411,7 @@ class PHPExcel_Shared_Date
     {
         $strippedDayValue = (str_replace(self::$numberSuffixes, '', $day));
         if (is_numeric($strippedDayValue)) {
-            return (integer) $strippedDayValue;
+            return (int) $strippedDayValue;
         }
         return $day;
     }

@@ -34,8 +34,8 @@ class PHPExcel_Shared_ZipArchive
 {
 
     /**    constants */
-    const OVERWRITE = 'OVERWRITE';
-    const CREATE    = 'CREATE';
+    public const OVERWRITE = 'OVERWRITE';
+    public const CREATE    = 'CREATE';
 
 
     /**

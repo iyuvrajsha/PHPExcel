@@ -6,7 +6,7 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 date_default_timezone_set('Europe/London');
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+define('EOL', (PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 date_default_timezone_set('Europe/London');
 
@@ -52,14 +52,14 @@ $objPHPExcel = $objReader->load("33chartcreate-bar.xlsx");
 echo date('H:i:s') , " Update cell data values that are displayed in the chart" , EOL;
 $objWorksheet = $objPHPExcel->getActiveSheet();
 $objWorksheet->fromArray(
-	array(
-		array(50-12,   50-15,		50-21),
-		array(50-56,   50-73,		50-86),
-		array(50-52,   50-61,		50-69),
-		array(50-30,   50-32,		50),
-	),
-	NULL,
-	'B2'
+    [
+		[50-12,   50-15,		50-21],
+		[50-56,   50-73,		50-86],
+		[50-52,   50-61,		50-69],
+		[50-30,   50-32,		50],
+	],
+    NULL,
+    'B2'
 );
 
 // Save Excel 2007 file

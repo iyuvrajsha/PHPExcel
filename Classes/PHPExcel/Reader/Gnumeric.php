@@ -41,14 +41,14 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
      *
      * @var array
      */
-    private $styles = array();
+    private $styles = [];
 
     /**
      * Shared Expressions
      *
      * @var array
      */
-    private $expressions = array();
+    private $expressions = [];
 
     private $referenceHelper = null;
 
@@ -109,7 +109,7 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
         $xml->xml($this->securityScanFile('compress.zlib://'.realpath($pFilename)), null, PHPExcel_Settings::getLibXmlLoaderOptions());
         $xml->setParserProperty(2, true);
 
-        $worksheetNames = array();
+        $worksheetNames = [];
         while ($xml->read()) {
             if ($xml->name == 'gnm:SheetName' && $xml->nodeType == XMLReader::ELEMENT) {
                 $xml->read();    //    Move onto the value node
@@ -140,16 +140,16 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
         $xml->xml($this->securityScanFile('compress.zlib://'.realpath($pFilename)), null, PHPExcel_Settings::getLibXmlLoaderOptions());
         $xml->setParserProperty(2, true);
 
-        $worksheetInfo = array();
+        $worksheetInfo = [];
         while ($xml->read()) {
             if ($xml->name == 'gnm:Sheet' && $xml->nodeType == XMLReader::ELEMENT) {
-                $tmpInfo = array(
+                $tmpInfo = [
                     'worksheetName' => '',
                     'lastColumnLetter' => 'A',
                     'lastColumnIndex' => 0,
                     'totalRows' => 0,
                     'totalColumns' => 0,
-                );
+                ];
 
                 while ($xml->read()) {
                     if ($xml->name == 'gnm:Name' && $xml->nodeType == XMLReader::ELEMENT) {
@@ -241,7 +241,7 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
             $officeDocMetaXML = $officeDocXML->meta;
 
             foreach ($officeDocMetaXML as $officePropertyData) {
-                $officePropertyDC = array();
+                $officePropertyDC = [];
                 if (isset($namespacesMeta['dc'])) {
                     $officePropertyDC = $officePropertyData->children($namespacesMeta['dc']);
                 }
@@ -268,7 +268,7 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
                             break;
                     }
                 }
-                $officePropertyMeta = array();
+                $officePropertyMeta = [];
                 if (isset($namespacesMeta['meta'])) {
                     $officePropertyMeta = $officePropertyData->children($namespacesMeta['meta']);
                 }
@@ -289,7 +289,7 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
                             $docProps->setModified($creationDate);
                             break;
                         case 'user-defined':
-                            list(, $attrName) = explode(':', $attributes['name']);
+                            [, $attrName] = explode(':', $attributes['name']);
                             switch ($attrName) {
                                 case 'publisher':
                                     $docProps->setCompany(trim($propertyValue));
@@ -417,11 +417,11 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
                 $type = PHPExcel_Cell_DataType::TYPE_FORMULA;
                 if ($ExprID > '') {
                     if (((string) $cell) > '') {
-                        $this->expressions[$ExprID] = array(
+                        $this->expressions[$ExprID] = [
                             'column'    => $cellAttributes->Col,
                             'row'        => $cellAttributes->Row,
-                            'formula'    => (string) $cell
-                        );
+                            'formula'    => (string) $cell,
+                        ];
 //                        echo 'NEW EXPRESSION ', $ExprID,'<br />';
                     } else {
                         $expression = $this->expressions[$ExprID];
@@ -497,7 +497,7 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
                     //    We still set the number format mask for date/time values, even if readDataOnly is true
                     if ((!$this->readDataOnly) ||
                         (PHPExcel_Shared_Date::isDateTimeFormatCode((string) $styleAttributes['Format']))) {
-                        $styleArray = array();
+                        $styleArray = [];
                         $styleArray['numberformat']['code'] = (string) $styleAttributes['Format'];
                         //    If readDataOnly is false, we set all formatting information
                         if (!$this->readDataOnly) {
@@ -779,7 +779,7 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
 
     private static function parseBorderAttributes($borderAttributes)
     {
-        $styleArray = array();
+        $styleArray = [];
         if (isset($borderAttributes["Color"])) {
             $styleArray['color']['rgb'] = self::parseGnumericColour($borderAttributes["Color"]);
         }
@@ -841,7 +841,7 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
 
     private static function parseGnumericColour($gnmColour)
     {
-        list($gnmR, $gnmG, $gnmB) = explode(':', $gnmColour);
+        [$gnmR, $gnmG, $gnmB] = explode(':', $gnmColour);
         $gnmR = substr(str_pad($gnmR, 4, '0', STR_PAD_RIGHT), 0, 2);
         $gnmG = substr(str_pad($gnmG, 4, '0', STR_PAD_RIGHT), 0, 2);
         $gnmB = substr(str_pad($gnmB, 4, '0', STR_PAD_RIGHT), 0, 2);

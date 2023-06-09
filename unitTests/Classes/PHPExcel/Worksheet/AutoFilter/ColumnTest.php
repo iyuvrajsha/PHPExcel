@@ -113,9 +113,9 @@ class AutofilterColumnTest extends PHPUnit_Framework_TestCase
 
     public function testSetAttributes()
     {
-        $attributeSet = array(    'val' => 100,
-                                'maxVal' => 200
-                             );
+        $attributeSet = [    'val' => 100,
+                                'maxVal' => 200,
+                             ];
 
         //    Setters return the instance to implement the fluent interface
         $result = $this->_testAutoFilterColumnObject->setAttributes($attributeSet);
@@ -124,9 +124,9 @@ class AutofilterColumnTest extends PHPUnit_Framework_TestCase
 
     public function testGetAttributes()
     {
-        $attributeSet = array(    'val' => 100,
-                                'maxVal' => 200
-                             );
+        $attributeSet = [    'val' => 100,
+                                'maxVal' => 200,
+                             ];
 
         $this->_testAutoFilterColumnObject->setAttributes($attributeSet);
 
@@ -137,9 +137,9 @@ class AutofilterColumnTest extends PHPUnit_Framework_TestCase
 
     public function testSetAttribute()
     {
-        $attributeSet = array(    'val' => 100,
-                                'maxVal' => 200
-                             );
+        $attributeSet = [    'val' => 100,
+                                'maxVal' => 200,
+                             ];
 
         foreach ($attributeSet as $attributeName => $attributeValue) {
             //    Setters return the instance to implement the fluent interface
@@ -150,9 +150,9 @@ class AutofilterColumnTest extends PHPUnit_Framework_TestCase
 
     public function testGetAttribute()
     {
-        $attributeSet = array(    'val' => 100,
-                                'maxVal' => 200
-                             );
+        $attributeSet = [    'val' => 100,
+                                'maxVal' => 200,
+                             ];
 
         $this->_testAutoFilterColumnObject->setAttributes($attributeSet);
 

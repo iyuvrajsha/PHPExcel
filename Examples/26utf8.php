@@ -30,7 +30,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+define('EOL', (PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 date_default_timezone_set('Europe/London');
 
@@ -78,8 +78,8 @@ echo date('H:i:s') , " File written to " , str_replace('.php', '.htm', pathinfo(
 echo date('H:i:s') , " Write to PDF format" , EOL;
 try {
 	if (!PHPExcel_Settings::setPdfRenderer(
-		$rendererName,
-		$rendererLibraryPath
+	    $rendererName,
+	    $rendererLibraryPath
 	)) {
 		echo (
 			'NOTICE: Please set the $rendererName and $rendererLibraryPath values' .

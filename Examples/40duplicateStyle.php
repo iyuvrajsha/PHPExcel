@@ -5,7 +5,7 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 date_default_timezone_set('Europe/London');
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+define('EOL', (PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 date_default_timezone_set('Europe/London');
 
@@ -17,7 +17,7 @@ $objPHPExcel = new PHPExcel();
 $worksheet = $objPHPExcel->getActiveSheet();
 
 echo date('H:i:s') , " Create styles array" , EOL;
-$styles = array();
+$styles = [];
 for ($i = 0; $i < 10; $i++) {
     $style = new PHPExcel_Style();
     $style->getFont()->setSize($i + 4);

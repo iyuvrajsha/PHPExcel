@@ -30,7 +30,7 @@ class PHPExcel_Shared_String
     /**    Constants                */
     /**    Regular Expressions        */
     //    Fraction
-    const STRING_REGEXP_FRACTION    = '(-?)(\d+)\s+(\d+\/\d+)';
+    public const STRING_REGEXP_FRACTION    = '(-?)(\d+)\s+(\d+\/\d+)';
 
 
     /**
@@ -38,14 +38,14 @@ class PHPExcel_Shared_String
      *
      * @var string[]
      */
-    private static $controlCharacters = array();
+    private static $controlCharacters = [];
 
     /**
      * SYLK Characters array
      *
      * $var array
      */
-    private static $SYLKCharacters = array();
+    private static $SYLKCharacters = [];
 
     /**
      * Decimal separator
@@ -101,7 +101,7 @@ class PHPExcel_Shared_String
      */
     private static function buildSYLKCharacters()
     {
-        self::$SYLKCharacters = array(
+        self::$SYLKCharacters = [
             "\x1B 0"  => chr(0),
             "\x1B 1"  => chr(1),
             "\x1B 2"  => chr(2),
@@ -258,7 +258,7 @@ class PHPExcel_Shared_String
             "\x1B/="  => 'ý', // 253 in CP1252
             "\x1BN|"  => 'þ', // 254 in CP1252
             "\x1BNHy" => 'ÿ', // 255 in CP1252
-        );
+        ];
     }
 
     /**
@@ -426,7 +426,7 @@ class PHPExcel_Shared_String
      * @param mixed[] $arrcRuns Details of rich text runs in $value
      * @return string
      */
-    public static function UTF8toBIFF8UnicodeShort($value, $arrcRuns = array())
+    public static function UTF8toBIFF8UnicodeShort($value, $arrcRuns = [])
     {
         // character count
         $ln = self::CountCharacters($value, 'UTF-8');
@@ -523,8 +523,8 @@ class PHPExcel_Shared_String
         if (strlen($str) < 2) {
             return $str;
         }
-        $c0 = ord($str{0});
-        $c1 = ord($str{1});
+        $c0 = ord($str[0]);
+        $c1 = ord($str[1]);
         if ($c0 == 0xfe && $c1 == 0xff) {
             $str = substr($str, 2);
         } elseif ($c0 == 0xff && $c1 == 0xfe) {
@@ -535,11 +535,11 @@ class PHPExcel_Shared_String
         $newstr = '';
         for ($i=0; $i<$len; $i+=2) {
             if ($bom_be) {
-                $val = ord($str{$i})   << 4;
-                $val += ord($str{$i+1});
+                $val = ord($str[$i])   << 4;
+                $val += ord($str[$i+1]);
             } else {
-                $val = ord($str{$i+1}) << 4;
-                $val += ord($str{$i});
+                $val = ord($str[$i+1]) << 4;
+                $val += ord($str[$i]);
             }
             $newstr .= ($val == 0x228) ? "\n" : chr($val);
         }

@@ -6,7 +6,7 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 date_default_timezone_set('Europe/London');
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+define('EOL', (PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 date_default_timezone_set('Europe/London');
 
@@ -46,7 +46,7 @@ $inputFileType = 'Excel2007';
 $inputFileNames = 'templates/32readwrite*[0-9].xlsx';
 
 if ((isset($argc)) && ($argc > 1)) {
-	$inputFileNames = array();
+	$inputFileNames = [];
 	for($i = 1; $i < $argc; ++$i) {
 		$inputFileNames[] = dirname(__FILE__) . '/templates/' . $argv[$i];
 	}
@@ -81,18 +81,18 @@ foreach($inputFileNames as $inputFileName) {
 			foreach($chartNames as $i => $chartName) {
 				$chart = $worksheet->getChartByName($chartName);
 				if (!is_null($chart->getTitle())) {
-					$caption = '"' . implode(' ',$chart->getTitle()->getCaption()) . '"';
+					$caption = '"' . implode(' ', $chart->getTitle()->getCaption()) . '"';
 				} else {
 					$caption = 'Untitled';
 				}
 				echo '    ' , $chartName , ' - ' , $caption , EOL;
-				echo str_repeat(' ',strlen($chartName)+3);
+				echo str_repeat(' ', strlen($chartName)+3);
 				$groupCount = $chart->getPlotArea()->getPlotGroupCount();
 				if ($groupCount == 1) {
 					$chartType = $chart->getPlotArea()->getPlotGroupByIndex(0)->getPlotType();
 					echo '    ' , $chartType , EOL;
 				} else {
-					$chartTypes = array();
+					$chartTypes = [];
 					for($i = 0; $i < $groupCount; ++$i) {
 						$chartTypes[] = $chart->getPlotArea()->getPlotGroupByIndex($i)->getPlotType();
 					}

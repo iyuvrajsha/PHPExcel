@@ -125,7 +125,7 @@ class PHPExcel_CachedObjectStorage_Igbinary extends PHPExcel_CachedObjectStorage
             $this->currentObject->detach();
             $this->currentObject = $this->currentObjectID = null;
         }
-        $this->cellCache = array();
+        $this->cellCache = [];
 
         //    detach ourself from the worksheet, so that it can then delete this object successfully
         $this->parent = null;

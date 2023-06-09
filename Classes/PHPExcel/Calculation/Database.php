@@ -92,10 +92,10 @@ class PHPExcel_Calculation_Database
         $criteriaNames = array_shift($criteria);
 
         //    Convert the criteria into a set of AND/OR conditions with [:placeholders]
-        $testConditions = $testValues = array();
+        $testConditions = $testValues = [];
         $testConditionsCount = 0;
         foreach ($criteriaNames as $key => $criteriaName) {
-            $testCondition = array();
+            $testCondition = [];
             $testConditionCount = 0;
             foreach ($criteria as $row => $criterion) {
                 if ($criterion[$key] > '') {
@@ -147,7 +147,7 @@ class PHPExcel_Calculation_Database
         //    reduce the database to a set of rows that match all the criteria
         $database = self::filter($database, $criteria);
         //    extract an array of values for the requested column
-        $colData = array();
+        $colData = [];
         foreach ($database as $row) {
             $colData[] = $row[$field];
         }
@@ -284,7 +284,7 @@ class PHPExcel_Calculation_Database
         //    reduce the database to a set of rows that match all the criteria
         $database = self::filter($database, $criteria);
         //    extract an array of values for the requested column
-        $colData = array();
+        $colData = [];
         foreach ($database as $row) {
             $colData[] = $row[$field];
         }

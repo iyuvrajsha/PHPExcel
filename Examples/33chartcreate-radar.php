@@ -6,7 +6,7 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 date_default_timezone_set('Europe/London');
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+define('EOL', (PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 date_default_timezone_set('Europe/London');
 
@@ -43,21 +43,21 @@ require_once dirname(__FILE__) . '/../Classes/PHPExcel.php';
 $objPHPExcel = new PHPExcel();
 $objWorksheet = $objPHPExcel->getActiveSheet();
 $objWorksheet->fromArray(
-	array(
-		array('',	2010,	2011,	2012),
-		array('Jan',   47,   45,		71),
-		array('Feb',   56,   73,		86),
-		array('Mar',   52,   61,		69),
-		array('Apr',   40,   52,		60),
-		array('May',   42,   55,		71),
-		array('Jun',   58,   63,		76),
-		array('Jul',   53,   61,		89),
-		array('Aug',   46,   69,		85),
-		array('Sep',   62,   75,		81),
-		array('Oct',   51,   70,		96),
-		array('Nov',   55,   66,		89),
-		array('Dec',   68,   62,		0),
-	)
+    [
+		['',	2010,	2011,	2012],
+		['Jan',   47,   45,		71],
+		['Feb',   56,   73,		86],
+		['Mar',   52,   61,		69],
+		['Apr',   40,   52,		60],
+		['May',   42,   55,		71],
+		['Jun',   58,   63,		76],
+		['Jul',   53,   61,		89],
+		['Aug',   46,   69,		85],
+		['Sep',   62,   75,		81],
+		['Oct',   51,   70,		96],
+		['Nov',   55,   66,		89],
+		['Dec',   68,   62,		0],
+	]
 );
 
 
@@ -68,10 +68,10 @@ $objWorksheet->fromArray(
 //		Number of datapoints in series
 //		Data values
 //		Data Marker
-$dataSeriesLabels = array(
+$dataSeriesLabels = [
 	new PHPExcel_Chart_DataSeriesValues('String', 'Worksheet!$C$1', NULL, 1),	//	2011
 	new PHPExcel_Chart_DataSeriesValues('String', 'Worksheet!$D$1', NULL, 1),	//	2012
-);
+];
 //	Set the X-Axis Labels
 //		Datatype
 //		Cell reference for data
@@ -79,10 +79,10 @@ $dataSeriesLabels = array(
 //		Number of datapoints in series
 //		Data values
 //		Data Marker
-$xAxisTickValues = array(
+$xAxisTickValues = [
 	new PHPExcel_Chart_DataSeriesValues('String', 'Worksheet!$A$2:$A$13', NULL, 12),	//	Jan to Dec
 	new PHPExcel_Chart_DataSeriesValues('String', 'Worksheet!$A$2:$A$13', NULL, 12),	//	Jan to Dec
-);
+];
 //	Set the Data values for each data series we want to plot
 //		Datatype
 //		Cell reference for data
@@ -90,14 +90,14 @@ $xAxisTickValues = array(
 //		Number of datapoints in series
 //		Data values
 //		Data Marker
-$dataSeriesValues = array(
+$dataSeriesValues = [
 	new PHPExcel_Chart_DataSeriesValues('Number', 'Worksheet!$C$2:$C$13', NULL, 12),
 	new PHPExcel_Chart_DataSeriesValues('Number', 'Worksheet!$D$2:$D$13', NULL, 12),
-);
+];
 
 //	Build the dataseries
 $series = new PHPExcel_Chart_DataSeries(
-	PHPExcel_Chart_DataSeries::TYPE_RADARCHART,		// plotType
+    PHPExcel_Chart_DataSeries::TYPE_RADARCHART,		// plotType
 	NULL,											// plotGrouping (Radar charts don't have any grouping)
 	range(0, count($dataSeriesValues)-1),			// plotOrder
 	$dataSeriesLabels,								// plotLabel
@@ -112,7 +112,7 @@ $series = new PHPExcel_Chart_DataSeries(
 $layout = new PHPExcel_Chart_Layout();
 
 //	Set the series in the plot area
-$plotArea = new PHPExcel_Chart_PlotArea($layout, array($series));
+$plotArea = new PHPExcel_Chart_PlotArea($layout, [$series]);
 //	Set the chart legend
 $legend = new PHPExcel_Chart_Legend(PHPExcel_Chart_Legend::POSITION_RIGHT, NULL, false);
 
@@ -121,7 +121,7 @@ $title = new PHPExcel_Chart_Title('Test Radar Chart');
 
 //	Create the chart
 $chart = new PHPExcel_Chart(
-	'chart1',		// name
+    'chart1',		// name
 	$title,			// title
 	$legend,		// legend
 	$plotArea,		// plotArea

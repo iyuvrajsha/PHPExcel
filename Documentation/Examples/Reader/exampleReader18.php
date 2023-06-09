@@ -33,7 +33,7 @@ $inputFileType = 'Excel5';
 //	$inputFileType = 'Gnumeric';
 $inputFileName = './sampleData/example1.xls';
 
-echo 'Loading file ',pathinfo($inputFileName,PATHINFO_BASENAME),' information using IOFactory with a defined reader type of ',$inputFileType,'<br />';
+echo 'Loading file ',pathinfo($inputFileName, PATHINFO_BASENAME),' information using IOFactory with a defined reader type of ',$inputFileType,'<br />';
 
 $objReader = PHPExcel_IOFactory::createReader($inputFileType);
 $worksheetNames = $objReader->listWorksheetNames($inputFileName);

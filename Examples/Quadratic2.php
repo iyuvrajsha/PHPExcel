@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
 		$callEndTime = microtime(true);
 		$callTime = $callEndTime - $callStartTime;
 
-		echo '<hr />Call time for Quadratic Equation Solution was '.sprintf('%.4f',$callTime).' seconds<br /><hr />';
+		echo '<hr />Call time for Quadratic Equation Solution was '.sprintf('%.4f', $callTime).' seconds<br /><hr />';
 		echo ' Peak memory usage: '.(memory_get_peak_usage(true) / 1024 / 1024).' MB<br />';
 	}
 }

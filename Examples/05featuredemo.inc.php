@@ -51,7 +51,7 @@ $objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
 echo date('H:i:s') , " Add some data" , EOL;
 $objPHPExcel->setActiveSheetIndex(0);
 $objPHPExcel->getActiveSheet()->setCellValue('B1', 'Invoice');
-$objPHPExcel->getActiveSheet()->setCellValue('D1', PHPExcel_Shared_Date::PHPToExcel( gmmktime(0,0,0,date('m'),date('d'),date('Y')) ));
+$objPHPExcel->getActiveSheet()->setCellValue('D1', PHPExcel_Shared_Date::PHPToExcel( gmmktime(0, 0, 0, date('m'), date('d'), date('Y')) ));
 $objPHPExcel->getActiveSheet()->getStyle('D1')->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_XLSX15);
 $objPHPExcel->getActiveSheet()->setCellValue('E1', '#12566');
 
@@ -175,27 +175,27 @@ $objPHPExcel->getActiveSheet()->getStyle('B5')->getAlignment()->setShrinkToFit(t
 
 // Set thin black border outline around column
 echo date('H:i:s') , " Set thin black border outline around column" , EOL;
-$styleThinBlackBorderOutline = array(
-	'borders' => array(
-		'outline' => array(
+$styleThinBlackBorderOutline = [
+	'borders' => [
+		'outline' => [
 			'style' => PHPExcel_Style_Border::BORDER_THIN,
-			'color' => array('argb' => 'FF000000'),
-		),
-	),
-);
+			'color' => ['argb' => 'FF000000'],
+		],
+	],
+];
 $objPHPExcel->getActiveSheet()->getStyle('A4:E10')->applyFromArray($styleThinBlackBorderOutline);
 
 
 // Set thick brown border outline around "Total"
 echo date('H:i:s') , " Set thick brown border outline around Total" , EOL;
-$styleThickBrownBorderOutline = array(
-	'borders' => array(
-		'outline' => array(
+$styleThickBrownBorderOutline = [
+	'borders' => [
+		'outline' => [
 			'style' => PHPExcel_Style_Border::BORDER_THICK,
-			'color' => array('argb' => 'FF993300'),
-		),
-	),
-);
+			'color' => ['argb' => 'FF993300'],
+		],
+	],
+];
 $objPHPExcel->getActiveSheet()->getStyle('D13:E13')->applyFromArray($styleThickBrownBorderOutline);
 
 // Set fills
@@ -206,60 +206,60 @@ $objPHPExcel->getActiveSheet()->getStyle('A1:E1')->getFill()->getStartColor()->s
 // Set style for header row using alternative method
 echo date('H:i:s') , " Set style for header row using alternative method" , EOL;
 $objPHPExcel->getActiveSheet()->getStyle('A3:E3')->applyFromArray(
-		array(
-			'font'    => array(
-				'bold'      => true
-			),
-			'alignment' => array(
+    [
+			'font'    => [
+				'bold'      => true,
+			],
+			'alignment' => [
 				'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_RIGHT,
-			),
-			'borders' => array(
-				'top'     => array(
- 					'style' => PHPExcel_Style_Border::BORDER_THIN
- 				)
-			),
-			'fill' => array(
+			],
+			'borders' => [
+				'top'     => [
+ 					'style' => PHPExcel_Style_Border::BORDER_THIN,
+ 				],
+			],
+			'fill' => [
 	 			'type'       => PHPExcel_Style_Fill::FILL_GRADIENT_LINEAR,
 	  			'rotation'   => 90,
-	 			'startcolor' => array(
-	 				'argb' => 'FFA0A0A0'
-	 			),
-	 			'endcolor'   => array(
-	 				'argb' => 'FFFFFFFF'
-	 			)
-	 		)
-		)
+	 			'startcolor' => [
+	 				'argb' => 'FFA0A0A0',
+	 			],
+	 			'endcolor'   => [
+	 				'argb' => 'FFFFFFFF',
+	 			],
+	 		],
+		]
 );
 
 $objPHPExcel->getActiveSheet()->getStyle('A3')->applyFromArray(
-		array(
-			'alignment' => array(
+    [
+			'alignment' => [
 				'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT,
-			),
-			'borders' => array(
-				'left'     => array(
- 					'style' => PHPExcel_Style_Border::BORDER_THIN
- 				)
-			)
-		)
+			],
+			'borders' => [
+				'left'     => [
+ 					'style' => PHPExcel_Style_Border::BORDER_THIN,
+ 				],
+			],
+		]
 );
 
 $objPHPExcel->getActiveSheet()->getStyle('B3')->applyFromArray(
-		array(
-			'alignment' => array(
+    [
+			'alignment' => [
 				'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT,
-			)
-		)
+			],
+		]
 );
 
 $objPHPExcel->getActiveSheet()->getStyle('E3')->applyFromArray(
-		array(
-			'borders' => array(
-				'right'     => array(
- 					'style' => PHPExcel_Style_Border::BORDER_THIN
- 				)
-			)
-		)
+    [
+			'borders' => [
+				'right'     => [
+ 					'style' => PHPExcel_Style_Border::BORDER_THIN,
+ 				],
+			],
+		]
 );
 
 // Unprotect a cell

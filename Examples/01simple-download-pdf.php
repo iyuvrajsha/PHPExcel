@@ -83,9 +83,9 @@ $objPHPExcel->setActiveSheetIndex(0);
 
 
 if (!PHPExcel_Settings::setPdfRenderer(
-		$rendererName,
-		$rendererLibraryPath
-	)) {
+    $rendererName,
+    $rendererLibraryPath
+)) {
 	die(
 		'NOTICE: Please set the $rendererName and $rendererLibraryPath values' .
 		'<br />' .

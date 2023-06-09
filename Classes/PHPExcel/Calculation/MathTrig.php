@@ -43,7 +43,7 @@ class PHPExcel_Calculation_MathTrig
     {
         $startVal = floor(sqrt($value));
 
-        $factorArray = array();
+        $factorArray = [];
         for ($i = $startVal; $i > 1; --$i) {
             if (($value % $i) == 0) {
                 $factorArray = array_merge($factorArray, self::factors($value / $i));
@@ -57,7 +57,7 @@ class PHPExcel_Calculation_MathTrig
             rsort($factorArray);
             return $factorArray;
         } else {
-            return array((integer) $value);
+            return [(int) $value];
         }
     }
 
@@ -350,7 +350,7 @@ class PHPExcel_Calculation_MathTrig
     public static function GCD()
     {
         $returnValue = 1;
-        $allValuesFactors = array();
+        $allValuesFactors = [];
         // Loop through arguments
         foreach (PHPExcel_Calculation_Functions::flattenArray(func_get_args()) as $value) {
             if (!is_numeric($value)) {
@@ -457,7 +457,7 @@ class PHPExcel_Calculation_MathTrig
     public static function LCM()
     {
         $returnValue = 1;
-        $allPoweredFactors = array();
+        $allPoweredFactors = [];
         // Loop through arguments
         foreach (PHPExcel_Calculation_Functions::flattenArray(func_get_args()) as $value) {
             if (!is_numeric($value)) {
@@ -470,7 +470,7 @@ class PHPExcel_Calculation_MathTrig
             }
             $myFactors = self::factors(floor($value));
             $myCountedFactors = array_count_values($myFactors);
-            $myPoweredFactors = array();
+            $myPoweredFactors = [];
             foreach ($myCountedFactors as $myCountedFactor => $myCountedPower) {
                 $myPoweredFactors[$myCountedFactor] = pow($myCountedFactor, $myCountedPower);
             }
@@ -485,7 +485,7 @@ class PHPExcel_Calculation_MathTrig
             }
         }
         foreach ($allPoweredFactors as $allPoweredFactor) {
-            $returnValue *= (integer) $allPoweredFactor;
+            $returnValue *= (int) $allPoweredFactor;
         }
         return $returnValue;
     }
@@ -535,15 +535,15 @@ class PHPExcel_Calculation_MathTrig
      */
     public static function MDETERM($matrixValues)
     {
-        $matrixData = array();
+        $matrixData = [];
         if (!is_array($matrixValues)) {
-            $matrixValues = array(array($matrixValues));
+            $matrixValues = [[$matrixValues]];
         }
 
         $row = $maxColumn = 0;
         foreach ($matrixValues as $matrixRow) {
             if (!is_array($matrixRow)) {
-                $matrixRow = array($matrixRow);
+                $matrixRow = [$matrixRow];
             }
             $column = 0;
             foreach ($matrixRow as $matrixCell) {
@@ -586,15 +586,15 @@ class PHPExcel_Calculation_MathTrig
      */
     public static function MINVERSE($matrixValues)
     {
-        $matrixData = array();
+        $matrixData = [];
         if (!is_array($matrixValues)) {
-            $matrixValues = array(array($matrixValues));
+            $matrixValues = [[$matrixValues]];
         }
 
         $row = $maxColumn = 0;
         foreach ($matrixValues as $matrixRow) {
             if (!is_array($matrixRow)) {
-                $matrixRow = array($matrixRow);
+                $matrixRow = [$matrixRow];
             }
             $column = 0;
             foreach ($matrixRow as $matrixCell) {
@@ -631,19 +631,19 @@ class PHPExcel_Calculation_MathTrig
      */
     public static function MMULT($matrixData1, $matrixData2)
     {
-        $matrixAData = $matrixBData = array();
+        $matrixAData = $matrixBData = [];
         if (!is_array($matrixData1)) {
-            $matrixData1 = array(array($matrixData1));
+            $matrixData1 = [[$matrixData1]];
         }
         if (!is_array($matrixData2)) {
-            $matrixData2 = array(array($matrixData2));
+            $matrixData2 = [[$matrixData2]];
         }
 
         try {
             $rowA = 0;
             foreach ($matrixData1 as $matrixRow) {
                 if (!is_array($matrixRow)) {
-                    $matrixRow = array($matrixRow);
+                    $matrixRow = [$matrixRow];
                 }
                 $columnA = 0;
                 foreach ($matrixRow as $matrixCell) {
@@ -659,7 +659,7 @@ class PHPExcel_Calculation_MathTrig
             $rowB = 0;
             foreach ($matrixData2 as $matrixRow) {
                 if (!is_array($matrixRow)) {
-                    $matrixRow = array($matrixRow);
+                    $matrixRow = [$matrixRow];
                 }
                 $columnB = 0;
                 foreach ($matrixRow as $matrixCell) {
@@ -933,19 +933,19 @@ class PHPExcel_Calculation_MathTrig
     public static function ROMAN($aValue, $style = 0)
     {
         $aValue    = PHPExcel_Calculation_Functions::flattenSingleValue($aValue);
-        $style    = (is_null($style))    ? 0 :    (integer) PHPExcel_Calculation_Functions::flattenSingleValue($style);
+        $style    = (is_null($style))    ? 0 :    (int) PHPExcel_Calculation_Functions::flattenSingleValue($style);
         if ((!is_numeric($aValue)) || ($aValue < 0) || ($aValue >= 4000)) {
             return PHPExcel_Calculation_Functions::VALUE();
         }
-        $aValue = (integer) $aValue;
+        $aValue = (int) $aValue;
         if ($aValue == 0) {
             return '';
         }
 
-        $mill = array('', 'M', 'MM', 'MMM', 'MMMM', 'MMMMM');
-        $cent = array('', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM');
-        $tens = array('', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC');
-        $ones = array('', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX');
+        $mill = ['', 'M', 'MM', 'MMM', 'MMMM', 'MMMMM'];
+        $cent = ['', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM'];
+        $tens = ['', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC'];
+        $ones = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
 
         $roman = '';
         while ($aValue > 5999) {
@@ -1192,7 +1192,7 @@ class PHPExcel_Calculation_MathTrig
      * @param    string        $condition        The criteria that defines which cells will be summed.
      * @return    float
      */
-    public static function SUMIF($aArgs, $condition, $sumArgs = array())
+    public static function SUMIF($aArgs, $condition, $sumArgs = [])
     {
         $returnValue = 0;
 

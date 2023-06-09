@@ -18,16 +18,16 @@ class AdvancedValueBinderTest extends PHPUnit_Framework_TestCase
         $currencyUSD = PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD_SIMPLE;
         $currencyEURO = str_replace('$', '€', PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
 
-        return array(
-            array('10%', 0.1, PHPExcel_Style_NumberFormat::FORMAT_PERCENTAGE_00, ',', '.', '$'),
-            array('$10.11', 10.11, $currencyUSD, ',', '.', '$'),
-            array('$1,010.12', 1010.12, $currencyUSD, ',', '.', '$'),
-            array('$20,20', 20.2, $currencyUSD, '.', ',', '$'),
-            array('$2.020,20', 2020.2, $currencyUSD, '.', ',', '$'),
-            array('€2.020,20', 2020.2, $currencyEURO, '.', ',', '€'),
-            array('€ 2.020,20', 2020.2, $currencyEURO, '.', ',', '€'),
-            array('€2,020.22', 2020.22, $currencyEURO, ',', '.', '€'),
-        );
+        return [
+            ['10%', 0.1, PHPExcel_Style_NumberFormat::FORMAT_PERCENTAGE_00, ',', '.', '$'],
+            ['$10.11', 10.11, $currencyUSD, ',', '.', '$'],
+            ['$1,010.12', 1010.12, $currencyUSD, ',', '.', '$'],
+            ['$20,20', 20.2, $currencyUSD, '.', ',', '$'],
+            ['$2.020,20', 2020.2, $currencyUSD, '.', ',', '$'],
+            ['€2.020,20', 2020.2, $currencyEURO, '.', ',', '€'],
+            ['€ 2.020,20', 2020.2, $currencyEURO, '.', ',', '€'],
+            ['€2,020.22', 2020.22, $currencyEURO, ',', '.', '€'],
+        ];
     }
 
     /**
@@ -37,7 +37,7 @@ class AdvancedValueBinderTest extends PHPUnit_Framework_TestCase
     {
         $sheet = $this->getMock(
             'PHPExcel_Worksheet',
-            array('getStyle', 'getNumberFormat', 'setFormatCode','getCellCacheController')
+            ['getStyle', 'getNumberFormat', 'setFormatCode','getCellCacheController']
         );
         $cache = $this->getMockBuilder('PHPExcel_CachedObjectStorage_Memory')
             ->disableOriginalConstructor()

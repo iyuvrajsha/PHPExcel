@@ -49,9 +49,9 @@ class PHPExcel_Autoloader
         }
         // Register ourselves with SPL
         if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
-            return spl_autoload_register(array('PHPExcel_Autoloader', 'load'), true, true);
+            return spl_autoload_register(['PHPExcel_Autoloader', 'load'], true, true);
         } else {
-            return spl_autoload_register(array('PHPExcel_Autoloader', 'load'));
+            return spl_autoload_register(['PHPExcel_Autoloader', 'load']);
         }
     }
 

@@ -263,7 +263,7 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
             // Calculate freeze coordinates
             $xSplit = $ySplit = 0;
 
-            list($xSplit, $ySplit) = PHPExcel_Cell::coordinateFromString($topLeftCell);
+            [$xSplit, $ySplit] = PHPExcel_Cell::coordinateFromString($topLeftCell);
             $xSplit = PHPExcel_Cell::columnIndexFromString($xSplit);
 
             // pane
@@ -761,7 +761,7 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
             $range = $range[0];
             //    Strip any worksheet ref
             if (strpos($range[0], '!') !== false) {
-                list($ws, $range[0]) = explode('!', $range[0]);
+                [$ws, $range[0]] = explode('!', $range[0]);
             }
             $range = implode(':', $range);
 
@@ -905,8 +905,8 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
     private function writeBreaks(PHPExcel_Shared_XMLWriter $objWriter = null, PHPExcel_Worksheet $pSheet = null)
     {
         // Get row and column breaks
-        $aRowBreaks = array();
-        $aColumnBreaks = array();
+        $aRowBreaks = [];
+        $aColumnBreaks = [];
         foreach ($pSheet->getBreaks() as $cell => $breakType) {
             if ($breakType == PHPExcel_Worksheet::BREAK_ROW) {
                 $aRowBreaks[] = $cell;
@@ -976,7 +976,7 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
             $highestRow = $pSheet->getHighestRow();
 
             // Loop through cells
-            $cellsByRow = array();
+            $cellsByRow = [];
             foreach ($pSheet->getCellCollection() as $cellID) {
                 $cellAddress = PHPExcel_Cell::coordinateFromString($cellID);
                 $cellsByRow[$cellAddress[1]][] = $cellID;

@@ -64,9 +64,9 @@ class AutoFilterTest extends PHPUnit_Framework_TestCase
 
     public function testSetRange()
     {
-        $ranges = array('G1:J512' => 'Worksheet1!G1:J512',
-                        'K1:N20' => 'K1:N20'
-                       );
+        $ranges = ['G1:J512' => 'Worksheet1!G1:J512',
+                        'K1:N20' => 'K1:N20',
+                       ];
 
         foreach ($ranges as $actualRange => $fullRange) {
             //    Setters return the instance to implement the fluent interface
@@ -112,10 +112,10 @@ class AutoFilterTest extends PHPUnit_Framework_TestCase
 
     public function testGetColumnOffset()
     {
-        $columnIndexes = array(    'H' => 0,
+        $columnIndexes = [    'H' => 0,
                                 'K' => 3,
-                                'M' => 5
-                              );
+                                'M' => 5,
+                              ];
 
         //    If we request a specific column by its column ID, we should get an
         //    integer returned representing the column offset within the range
@@ -204,7 +204,7 @@ class AutoFilterTest extends PHPUnit_Framework_TestCase
 
     public function testGetColumns()
     {
-        $columnIndexes = array('L','M');
+        $columnIndexes = ['L','M'];
 
         foreach ($columnIndexes as $columnIndex) {
             $this->_testAutoFilterObject->setColumn($columnIndex);
@@ -223,7 +223,7 @@ class AutoFilterTest extends PHPUnit_Framework_TestCase
 
     public function testGetColumn()
     {
-        $columnIndexes = array('L','M');
+        $columnIndexes = ['L','M'];
 
         foreach ($columnIndexes as $columnIndex) {
             $this->_testAutoFilterObject->setColumn($columnIndex);
@@ -239,10 +239,10 @@ class AutoFilterTest extends PHPUnit_Framework_TestCase
 
     public function testGetColumnByOffset()
     {
-        $columnIndexes = array(    0 => 'H',
+        $columnIndexes = [    0 => 'H',
                                 3 => 'K',
-                                5 => 'M'
-                              );
+                                5 => 'M',
+                              ];
 
         //    If we request a specific column by its offset, we should
         //    get a PHPExcel_Worksheet_AutoFilter_Column object returned
@@ -276,7 +276,7 @@ class AutoFilterTest extends PHPUnit_Framework_TestCase
     {
         $expectedResult = '';
 
-        $columnIndexes = array('L','M','N');
+        $columnIndexes = ['L','M','N'];
         foreach ($columnIndexes as $columnIndex) {
             $this->_testAutoFilterObject->setColumn($columnIndex);
         }
@@ -300,12 +300,12 @@ class AutoFilterTest extends PHPUnit_Framework_TestCase
         $expectedResult = 'G1:J512';
 
         //    These columns should be retained
-        $columnIndexes1 = array('I','J');
+        $columnIndexes1 = ['I','J'];
         foreach ($columnIndexes1 as $columnIndex) {
             $this->_testAutoFilterObject->setColumn($columnIndex);
         }
         //    These columns should be discarded
-        $columnIndexes2 = array('K','L','M');
+        $columnIndexes2 = ['K','L','M'];
         foreach ($columnIndexes2 as $columnIndex) {
             $this->_testAutoFilterObject->setColumn($columnIndex);
         }
@@ -327,7 +327,7 @@ class AutoFilterTest extends PHPUnit_Framework_TestCase
 
     public function testClone()
     {
-        $columnIndexes = array('L','M');
+        $columnIndexes = ['L','M'];
 
         foreach ($columnIndexes as $columnIndex) {
             $this->_testAutoFilterObject->setColumn($columnIndex);

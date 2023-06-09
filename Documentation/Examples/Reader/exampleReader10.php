@@ -41,7 +41,7 @@ class MyReadFilter implements PHPExcel_Reader_IReadFilter
 
 	private $_endRow = 0;
 
-	private $_columns = array();
+	private $_columns = [];
 
 	public function __construct($startRow, $endRow, $columns) {
 		$this->_startRow	= $startRow;
@@ -51,7 +51,7 @@ class MyReadFilter implements PHPExcel_Reader_IReadFilter
 
 	public function readCell($column, $row, $worksheetName = '') {
 		if ($row >= $this->_startRow && $row <= $this->_endRow) {
-			if (in_array($column,$this->_columns)) {
+			if (in_array($column, $this->_columns)) {
 				return true;
 			}
 		}
@@ -59,10 +59,10 @@ class MyReadFilter implements PHPExcel_Reader_IReadFilter
 	}
 }
 
-$filterSubset = new MyReadFilter(9,15,range('G','K'));
+$filterSubset = new MyReadFilter(9, 15, range('G', 'K'));
 
 
-echo 'Loading file ',pathinfo($inputFileName,PATHINFO_BASENAME),' using IOFactory with a defined reader type of ',$inputFileType,'<br />';
+echo 'Loading file ',pathinfo($inputFileName, PATHINFO_BASENAME),' using IOFactory with a defined reader type of ',$inputFileType,'<br />';
 $objReader = PHPExcel_IOFactory::createReader($inputFileType);
 echo 'Loading Sheet "',$sheetname,'" only<br />';
 $objReader->setLoadSheetsOnly($sheetname);
@@ -73,7 +73,7 @@ $objPHPExcel = $objReader->load($inputFileName);
 
 echo '<hr />';
 
-$sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+$sheetData = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
 var_dump($sheetData);
 
 

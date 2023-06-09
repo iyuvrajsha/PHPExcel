@@ -34,7 +34,7 @@ $inputFileType = 'Excel5';
 $inputFileName = './sampleData/example1.xls';
 $sheetname = 'Data Sheet #2';
 
-echo 'Loading file ',pathinfo($inputFileName,PATHINFO_BASENAME),' using IOFactory with a defined reader type of ',$inputFileType,'<br />';
+echo 'Loading file ',pathinfo($inputFileName, PATHINFO_BASENAME),' using IOFactory with a defined reader type of ',$inputFileType,'<br />';
 $objReader = PHPExcel_IOFactory::createReader($inputFileType);
 echo 'Loading Sheet "',$sheetname,'" only<br />';
 $objReader->setLoadSheetsOnly($sheetname);

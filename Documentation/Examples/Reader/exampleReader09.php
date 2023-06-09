@@ -40,7 +40,7 @@ class MyReadFilter implements PHPExcel_Reader_IReadFilter
 	public function readCell($column, $row, $worksheetName = '') {
 		// Read rows 1 to 7 and columns A to E only
 		if ($row >= 1 && $row <= 7) {
-			if (in_array($column,range('A','E'))) {
+			if (in_array($column, range('A', 'E'))) {
 				return true;
 			}
 		}
@@ -51,7 +51,7 @@ class MyReadFilter implements PHPExcel_Reader_IReadFilter
 $filterSubset = new MyReadFilter();
 
 
-echo 'Loading file ',pathinfo($inputFileName,PATHINFO_BASENAME),' using IOFactory with a defined reader type of ',$inputFileType,'<br />';
+echo 'Loading file ',pathinfo($inputFileName, PATHINFO_BASENAME),' using IOFactory with a defined reader type of ',$inputFileType,'<br />';
 $objReader = PHPExcel_IOFactory::createReader($inputFileType);
 echo 'Loading Sheet "',$sheetname,'" only<br />';
 $objReader->setLoadSheetsOnly($sheetname);
@@ -62,7 +62,7 @@ $objPHPExcel = $objReader->load($inputFileName);
 
 echo '<hr />';
 
-$sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+$sheetData = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
 var_dump($sheetData);
 
 

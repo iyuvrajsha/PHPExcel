@@ -39,7 +39,7 @@ class PHPExcel_Writer_Excel2007_StringTable extends PHPExcel_Writer_Excel2007_Wr
     {
         if ($pSheet !== null) {
             // Create string lookup table
-            $aStringTable = array();
+            $aStringTable = [];
             $cellCollection = null;
             $aFlippedStringTable = null;    // For faster lookup
 
@@ -294,10 +294,10 @@ class PHPExcel_Writer_Excel2007_StringTable extends PHPExcel_Writer_Excel2007_Wr
      * @param     array    $stringTable    Stringtable
      * @return     array
      */
-    public function flipStringTable($stringTable = array())
+    public function flipStringTable($stringTable = [])
     {
         // Return value
-        $returnValue = array();
+        $returnValue = [];
 
         // Loop through stringtable and add flipped items to $returnValue
         foreach ($stringTable as $key => $value) {

@@ -32,11 +32,11 @@ $objPHPExcel = new PHPExcel();
 $worksheet = $objPHPExcel->getActiveSheet();
 
 // Add some data
-$testDates = array(	'26 March 2012',	'29 Feb 2012',	'April 1, 2012',	'25/12/2012',
+$testDates = [	'26 March 2012',	'29 Feb 2012',	'April 1, 2012',	'25/12/2012',
 					'2012-Oct-31',		'5th November',	'January 1st',		'April 2012',
 					'17-03',			'03-2012',		'29 Feb 2011',		'03-05-07',
 					'03-MAY-07',		'03-13-07',
-				  );
+				  ];
 $testDateCount = count($testDates);
 
 for($row = 1; $row <= $testDateCount; ++$row) {

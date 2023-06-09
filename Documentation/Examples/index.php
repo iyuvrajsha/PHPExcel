@@ -17,11 +17,11 @@ date_default_timezone_set('Europe/London');
 
 <?php
 
-$exampleTypeList = glob('./*',GLOB_ONLYDIR);
+$exampleTypeList = glob('./*', GLOB_ONLYDIR);
 
 foreach($exampleTypeList as $exampleType) {
 
-	echo '<h1>PHPExcel ' . pathinfo($exampleType,PATHINFO_BASENAME) . ' Examples</h1>';
+	echo '<h1>PHPExcel ' . pathinfo($exampleType, PATHINFO_BASENAME) . ' Examples</h1>';
 
 	$exampleList = glob('./'.$exampleType.'/*.php');
 
@@ -37,7 +37,7 @@ foreach($exampleTypeList as $exampleType) {
 
 			echo '<a href="',$exampleFile,'">',$h1Text,'</a><br />';
 			if (($h2Text > '') &&
-				(pathinfo($exampleType,PATHINFO_BASENAME) != 'Calculations')) {
+				(pathinfo($exampleType, PATHINFO_BASENAME) != 'Calculations')) {
 				echo $h2Text,'<br />';
 			}
 		}

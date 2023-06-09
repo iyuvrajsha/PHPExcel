@@ -23,7 +23,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'DATE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'DATE'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -76,7 +76,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'DATEVALUE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'DATEVALUE'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -113,7 +113,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'YEAR'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'YEAR'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -129,7 +129,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'MONTHOFYEAR'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'MONTHOFYEAR'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -145,7 +145,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'WEEKOFYEAR'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'WEEKOFYEAR'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -161,7 +161,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'DAYOFWEEK'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'DAYOFWEEK'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -177,7 +177,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'DAYOFMONTH'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'DAYOFMONTH'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -193,7 +193,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'TIME'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'TIME'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -230,7 +230,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'TIMEVALUE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'TIMEVALUE'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -267,7 +267,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'HOUROFDAY'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'HOUROFDAY'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -283,7 +283,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'MINUTEOFHOUR'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'MINUTEOFHOUR'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -299,7 +299,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'SECONDOFMINUTE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'SECONDOFMINUTE'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -315,7 +315,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'NETWORKDAYS'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'NETWORKDAYS'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -331,7 +331,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'WORKDAY'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'WORKDAY'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -347,7 +347,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'EDATE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'EDATE'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -384,7 +384,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'EOMONTH'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'EOMONTH'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -421,7 +421,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'DATEDIF'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'DATEDIF'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -437,7 +437,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'DAYS360'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'DAYS360'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
@@ -453,7 +453,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'YEARFRAC'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'YEARFRAC'], $args);
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 

@@ -241,7 +241,7 @@ class PHPExcel_CachedObjectStorage_SQLite3 extends PHPExcel_CachedObjectStorage_
             throw new PHPExcel_Exception($this->DBHandle->lastErrorMsg());
         }
 
-        $cellKeys = array();
+        $cellKeys = [];
         while ($row = $cellIdsResult->fetchArray(SQLITE3_ASSOC)) {
             $cellKeys[] = $row['id'];
         }

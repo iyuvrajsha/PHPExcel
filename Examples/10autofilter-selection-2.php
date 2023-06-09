@@ -31,7 +31,7 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 date_default_timezone_set('Europe/London');
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+define('EOL', (PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 /** Include PHPExcel */
 require_once dirname(__FILE__) . '/../Classes/PHPExcel.php';
@@ -65,43 +65,43 @@ $startYear = $endYear = $currentYear = date('Y');
 $startYear--;
 $endYear++;
 
-$years = range($startYear,$endYear);
-$periods = range(1,12);
-$countries = array(	'United States',	'UK',		'France',	'Germany',
-					'Italy',			'Spain',	'Portugal',	'Japan'
-				  );
+$years = range($startYear, $endYear);
+$periods = range(1, 12);
+$countries = [	'United States',	'UK',		'France',	'Germany',
+					'Italy',			'Spain',	'Portugal',	'Japan',
+				  ];
 
 $row = 2;
 foreach($years as $year) {
 	foreach($periods as $period) {
 		foreach($countries as $country) {
-			$endDays = date('t',mktime(0,0,0,$period,1,$year));
+			$endDays = date('t', mktime(0, 0, 0, $period, 1, $year));
 			for($i = 1; $i <= $endDays; ++$i) {
 				$eDate = PHPExcel_Shared_Date::FormattedPHPToExcel(
-					$year,
-					$period,
-					$i
+				    $year,
+				    $period,
+				    $i
 				);
-				$value = rand(500,1000) * (1 + rand(-0.25,+0.25));
+				$value = rand(500, 1000) * (1 + rand(-0.25, +0.25));
 				$salesValue = $invoiceValue = NULL;
-				$incomeOrExpenditure = rand(-1,1);
+				$incomeOrExpenditure = rand(-1, 1);
 				if ($incomeOrExpenditure == -1) {
-					$expenditure = rand(-500,-1000) * (1 + rand(-0.25,+0.25));
+					$expenditure = rand(-500, -1000) * (1 + rand(-0.25, +0.25));
 					$income = NULL;
 				} elseif ($incomeOrExpenditure == 1) {
-					$expenditure = rand(-500,-1000) * (1 + rand(-0.25,+0.25));
-					$income = rand(500,1000) * (1 + rand(-0.25,+0.25));;
+					$expenditure = rand(-500, -1000) * (1 + rand(-0.25, +0.25));
+					$income = rand(500, 1000) * (1 + rand(-0.25, +0.25));;
 				} else {
 					$expenditure = NULL;
-					$income = rand(500,1000) * (1 + rand(-0.25,+0.25));;
+					$income = rand(500, 1000) * (1 + rand(-0.25, +0.25));;
 				}
-				$dataArray = array(	$year,
+				$dataArray = [	$year,
 									$period,
 									$country,
 									$eDate,
 									$income,
 									$expenditure,
-								  );
+								  ];
 				$objPHPExcel->getActiveSheet()->fromArray($dataArray, NULL, 'A'.$row++);
 			}
 		}
@@ -139,17 +139,17 @@ $autoFilter->getColumn('C')
     ->setFilterType(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_FILTERTYPE_FILTER)
     ->createRule()
 		->setRule(
-			PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_EQUAL,
-			'Germany'
+		    PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_EQUAL,
+		    'Germany'
 		);
 // Filter the Date column on a filter value of the year to date
 $autoFilter->getColumn('D')
 	->setFilterType(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_FILTERTYPE_DYNAMICFILTER)
 	->createRule()
 		->setRule(
-			PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_EQUAL,
-			NULL,
-			PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_DYNAMIC_YEARTODATE
+		    PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_EQUAL,
+		    NULL,
+		    PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_DYNAMIC_YEARTODATE
 		)
 		->setRuleType(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_DYNAMICFILTER);
 // Display only sales values that are between 400 and 600
@@ -157,16 +157,16 @@ $autoFilter->getColumn('E')
     ->setFilterType(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_FILTERTYPE_CUSTOMFILTER)
     ->createRule()
 		->setRule(
-			PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_GREATERTHANOREQUAL,
-			400
+		    PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_GREATERTHANOREQUAL,
+		    400
 		)
 		->setRuleType(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_CUSTOMFILTER);
 $autoFilter->getColumn('E')
     ->setJoin(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_COLUMN_JOIN_AND)
     ->createRule()
 		->setRule(
-			PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_LESSTHANOREQUAL,
-			600
+		    PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_LESSTHANOREQUAL,
+		    600
 		)
 		->setRuleType(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_CUSTOMFILTER);
 
@@ -185,7 +185,7 @@ $callEndTime = microtime(true);
 $callTime = $callEndTime - $callStartTime;
 
 echo date('H:i:s') , " File written to " , str_replace('.php', '.xlsx', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
+echo 'Call time to write Workbook was ' , sprintf('%.4f', $callTime) , " seconds" , EOL;
 // Echo memory usage
 echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , " MB" , EOL;
 
@@ -200,7 +200,7 @@ $callEndTime = microtime(true);
 $callTime = $callEndTime - $callStartTime;
 
 echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
+echo 'Call time to write Workbook was ' , sprintf('%.4f', $callTime) , " seconds" , EOL;
 // Echo memory usage
 echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , " MB" , EOL;
 

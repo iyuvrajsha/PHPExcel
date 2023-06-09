@@ -31,7 +31,7 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 date_default_timezone_set('Europe/London');
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+define('EOL', (PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 date_default_timezone_set('Europe/London');
 
@@ -62,26 +62,28 @@ $sharedStyle1 = new PHPExcel_Style();
 $sharedStyle2 = new PHPExcel_Style();
 
 $sharedStyle1->applyFromArray(
-	array('fill' 	=> array(
+    ['fill' 	=> [
 								'type'		=> PHPExcel_Style_Fill::FILL_SOLID,
-								'color'		=> array('argb' => 'FFCCFFCC')
-							),
-		  'borders' => array(
-								'bottom'	=> array('style' => PHPExcel_Style_Border::BORDER_THIN),
-								'right'		=> array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
-							)
-		 ));
+								'color'		=> ['argb' => 'FFCCFFCC'],
+							],
+		  'borders' => [
+								'bottom'	=> ['style' => PHPExcel_Style_Border::BORDER_THIN],
+								'right'		=> ['style' => PHPExcel_Style_Border::BORDER_MEDIUM],
+							],
+		 ]
+);
 
 $sharedStyle2->applyFromArray(
-	array('fill' 	=> array(
+    ['fill' 	=> [
 								'type'		=> PHPExcel_Style_Fill::FILL_SOLID,
-								'color'		=> array('argb' => 'FFFFFF00')
-							),
-		  'borders' => array(
-								'bottom'	=> array('style' => PHPExcel_Style_Border::BORDER_THIN),
-								'right'		=> array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
-							)
-		 ));
+								'color'		=> ['argb' => 'FFFFFF00'],
+							],
+		  'borders' => [
+								'bottom'	=> ['style' => PHPExcel_Style_Border::BORDER_THIN],
+								'right'		=> ['style' => PHPExcel_Style_Border::BORDER_MEDIUM],
+							],
+		 ]
+);
 
 $objPHPExcel->getActiveSheet()->setSharedStyle($sharedStyle1, "A1:T100");
 $objPHPExcel->getActiveSheet()->setSharedStyle($sharedStyle2, "C5:R95");
@@ -96,7 +98,7 @@ $callEndTime = microtime(true);
 $callTime = $callEndTime - $callStartTime;
 
 echo date('H:i:s') , " File written to " , str_replace('.php', '.xlsx', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
+echo 'Call time to write Workbook was ' , sprintf('%.4f', $callTime) , " seconds" , EOL;
 // Echo memory usage
 echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , " MB" , EOL;
 
@@ -111,7 +113,7 @@ $callEndTime = microtime(true);
 $callTime = $callEndTime - $callStartTime;
 
 echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
+echo 'Call time to write Workbook was ' , sprintf('%.4f', $callTime) , " seconds" , EOL;
 // Echo memory usage
 echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , " MB" , EOL;
 

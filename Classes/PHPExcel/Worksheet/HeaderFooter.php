@@ -88,12 +88,12 @@
 class PHPExcel_Worksheet_HeaderFooter
 {
     /* Header/footer image location */
-    const IMAGE_HEADER_LEFT   = 'LH';
-    const IMAGE_HEADER_CENTER = 'CH';
-    const IMAGE_HEADER_RIGHT  = 'RH';
-    const IMAGE_FOOTER_LEFT   = 'LF';
-    const IMAGE_FOOTER_CENTER = 'CF';
-    const IMAGE_FOOTER_RIGHT  = 'RF';
+    public const IMAGE_HEADER_LEFT   = 'LH';
+    public const IMAGE_HEADER_CENTER = 'CH';
+    public const IMAGE_HEADER_RIGHT  = 'RH';
+    public const IMAGE_FOOTER_LEFT   = 'LF';
+    public const IMAGE_FOOTER_CENTER = 'CF';
+    public const IMAGE_FOOTER_RIGHT  = 'RF';
 
     /**
      * OddHeader
@@ -170,7 +170,7 @@ class PHPExcel_Worksheet_HeaderFooter
      *
      * @var PHPExcel_Worksheet_HeaderFooterDrawing[]
      */
-    private $headerFooterImages = array();
+    private $headerFooterImages = [];
 
     /**
      * Create a new PHPExcel_Worksheet_HeaderFooter
@@ -453,7 +453,7 @@ class PHPExcel_Worksheet_HeaderFooter
     public function getImages()
     {
         // Sort array
-        $images = array();
+        $images = [];
         if (isset($this->headerFooterImages[self::IMAGE_HEADER_LEFT])) {
             $images[self::IMAGE_HEADER_LEFT] =         $this->headerFooterImages[self::IMAGE_HEADER_LEFT];
         }

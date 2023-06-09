@@ -40,20 +40,20 @@ class DefaultValueBinderTest extends PHPUnit_Framework_TestCase
 
     public function binderProvider()
     {
-        return array(
-            array(null),
-            array(''),
-            array('ABC'),
-            array('=SUM(A1:B2)'),
-            array(true),
-            array(false),
-            array(123),
-            array(-123.456),
-            array('123'),
-            array('-123.456'),
-            array('#REF!'),
-            array(new DateTime()),
-        );
+        return [
+            [null],
+            [''],
+            ['ABC'],
+            ['=SUM(A1:B2)'],
+            [true],
+            [false],
+            [123],
+            [-123.456],
+            ['123'],
+            ['-123.456'],
+            ['#REF!'],
+            [new DateTime()],
+        ];
     }
 
     /**
@@ -63,7 +63,7 @@ class DefaultValueBinderTest extends PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Cell_DefaultValueBinder','dataTypeForValue'), $args);
+        $result = call_user_func_array(['PHPExcel_Cell_DefaultValueBinder','dataTypeForValue'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
@@ -78,7 +78,7 @@ class DefaultValueBinderTest extends PHPUnit_Framework_TestCase
         $objRichText->createText('Hello World');
 
         $expectedResult = PHPExcel_Cell_DataType::TYPE_INLINE;
-        $result = call_user_func(array('PHPExcel_Cell_DefaultValueBinder','dataTypeForValue'), $objRichText);
+        $result = call_user_func(['PHPExcel_Cell_DefaultValueBinder','dataTypeForValue'], $objRichText);
         $this->assertEquals($expectedResult, $result);
     }
 }

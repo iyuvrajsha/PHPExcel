@@ -47,7 +47,7 @@ class chunkReadFilter implements PHPExcel_Reader_IReadFilter
 }
 
 
-echo 'Loading file ',pathinfo($inputFileName,PATHINFO_BASENAME),' using IOFactory with a defined reader type of ',$inputFileType,'<br />';
+echo 'Loading file ',pathinfo($inputFileName, PATHINFO_BASENAME),' using IOFactory with a defined reader type of ',$inputFileType,'<br />';
 /**  Create a new Reader of the type defined in $inputFileType  **/
 $objReader = PHPExcel_IOFactory::createReader($inputFileType);
 
@@ -76,12 +76,12 @@ $sheet = 0;
 for ($startRow = 2; $startRow <= 240; $startRow += $chunkSize) {
 	echo 'Loading WorkSheet #',($sheet+1),' using configurable filter for headings row 1 and for rows ',$startRow,' to ',($startRow+$chunkSize-1),'<br />';
 	/**  Tell the Read Filter, the limits on which rows we want to read this iteration  **/
-	$chunkFilter->setRows($startRow,$chunkSize);
+	$chunkFilter->setRows($startRow, $chunkSize);
 
     /**  Increment the worksheet index pointer for the Reader  **/
     $objReader->setSheetIndex($sheet);
 	/**  Load only the rows that match our filter into a new worksheet in the PHPExcel Object  **/
-    $objReader->loadIntoExisting($inputFileName,$objPHPExcel);
+    $objReader->loadIntoExisting($inputFileName, $objPHPExcel);
     /**  Set the worksheet title (to reference the "sheet" of data that we've loaded)  **/
     /**    and increment the sheet index as well  **/
     $objPHPExcel->getActiveSheet()->setTitle('Country Data #'.(++$sheet));
@@ -95,7 +95,7 @@ $loadedSheetNames = $objPHPExcel->getSheetNames();
 foreach($loadedSheetNames as $sheetIndex => $loadedSheetName) {
 	echo '<b>Worksheet #',$sheetIndex,' -> ',$loadedSheetName,'</b><br />';
 	$objPHPExcel->setActiveSheetIndexByName($loadedSheetName);
-	$sheetData = $objPHPExcel->getActiveSheet()->toArray(null,false,false,true);
+	$sheetData = $objPHPExcel->getActiveSheet()->toArray(null, false, false, true);
 	var_dump($sheetData);
 	echo '<br />';
 }

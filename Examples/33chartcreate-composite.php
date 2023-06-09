@@ -6,7 +6,7 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 date_default_timezone_set('Europe/London');
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+define('EOL', (PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 date_default_timezone_set('Europe/London');
 
@@ -43,21 +43,21 @@ require_once dirname(__FILE__) . '/../Classes/PHPExcel.php';
 $objPHPExcel = new PHPExcel();
 $objWorksheet = $objPHPExcel->getActiveSheet();
 $objWorksheet->fromArray(
-	array(
-		array('',		'Rainfall (mm)',	'Temperature (°F)',	'Humidity (%)'),
-		array('Jan',		78,   				52,					61),
-		array('Feb',		64,   				54,					62),
-		array('Mar',		62,   				57,					63),
-		array('Apr',		21,   				62,					59),
-		array('May',		11,   				75,					60),
-		array('Jun',		1,   				75,					57),
-		array('Jul',		1,   				79,					56),
-		array('Aug',		1,   				79,					59),
-		array('Sep',		10,   				75,					60),
-		array('Oct',		40,   				68,					63),
-		array('Nov',		69,   				62,					64),
-		array('Dec',		89,   				57,					66),
-	)
+    [
+		['',		'Rainfall (mm)',	'Temperature (°F)',	'Humidity (%)'],
+		['Jan',		78,   				52,					61],
+		['Feb',		64,   				54,					62],
+		['Mar',		62,   				57,					63],
+		['Apr',		21,   				62,					59],
+		['May',		11,   				75,					60],
+		['Jun',		1,   				75,					57],
+		['Jul',		1,   				79,					56],
+		['Aug',		1,   				79,					59],
+		['Sep',		10,   				75,					60],
+		['Oct',		40,   				68,					63],
+		['Nov',		69,   				62,					64],
+		['Dec',		89,   				57,					66],
+	]
 );
 
 
@@ -68,15 +68,15 @@ $objWorksheet->fromArray(
 //		Number of datapoints in series
 //		Data values
 //		Data Marker
-$dataSeriesLabels1 = array(
+$dataSeriesLabels1 = [
 	new PHPExcel_Chart_DataSeriesValues('String', 'Worksheet!$B$1', NULL, 1),	//	Temperature
-);
-$dataSeriesLabels2 = array(
+];
+$dataSeriesLabels2 = [
 	new PHPExcel_Chart_DataSeriesValues('String', 'Worksheet!$C$1', NULL, 1),	//	Rainfall
-);
-$dataSeriesLabels3 = array(
+];
+$dataSeriesLabels3 = [
 	new PHPExcel_Chart_DataSeriesValues('String', 'Worksheet!$D$1', NULL, 1),	//	Humidity
-);
+];
 
 //	Set the X-Axis Labels
 //		Datatype
@@ -85,9 +85,9 @@ $dataSeriesLabels3 = array(
 //		Number of datapoints in series
 //		Data values
 //		Data Marker
-$xAxisTickValues = array(
+$xAxisTickValues = [
 	new PHPExcel_Chart_DataSeriesValues('String', 'Worksheet!$A$2:$A$13', NULL, 12),	//	Jan to Dec
-);
+];
 
 
 //	Set the Data values for each data series we want to plot
@@ -97,13 +97,13 @@ $xAxisTickValues = array(
 //		Number of datapoints in series
 //		Data values
 //		Data Marker
-$dataSeriesValues1 = array(
+$dataSeriesValues1 = [
 	new PHPExcel_Chart_DataSeriesValues('Number', 'Worksheet!$B$2:$B$13', NULL, 12),
-);
+];
 
 //	Build the dataseries
 $series1 = new PHPExcel_Chart_DataSeries(
-	PHPExcel_Chart_DataSeries::TYPE_BARCHART,		// plotType
+    PHPExcel_Chart_DataSeries::TYPE_BARCHART,		// plotType
 	PHPExcel_Chart_DataSeries::GROUPING_CLUSTERED,	// plotGrouping
 	range(0, count($dataSeriesValues1)-1),			// plotOrder
 	$dataSeriesLabels1,								// plotLabel
@@ -122,13 +122,13 @@ $series1->setPlotDirection(PHPExcel_Chart_DataSeries::DIRECTION_COL);
 //		Number of datapoints in series
 //		Data values
 //		Data Marker
-$dataSeriesValues2 = array(
+$dataSeriesValues2 = [
 	new PHPExcel_Chart_DataSeriesValues('Number', 'Worksheet!$C$2:$C$13', NULL, 12),
-);
+];
 
 //	Build the dataseries
 $series2 = new PHPExcel_Chart_DataSeries(
-	PHPExcel_Chart_DataSeries::TYPE_LINECHART,		// plotType
+    PHPExcel_Chart_DataSeries::TYPE_LINECHART,		// plotType
 	PHPExcel_Chart_DataSeries::GROUPING_STANDARD,	// plotGrouping
 	range(0, count($dataSeriesValues2)-1),			// plotOrder
 	$dataSeriesLabels2,								// plotLabel
@@ -144,13 +144,13 @@ $series2 = new PHPExcel_Chart_DataSeries(
 //		Number of datapoints in series
 //		Data values
 //		Data Marker
-$dataSeriesValues3 = array(
+$dataSeriesValues3 = [
 	new PHPExcel_Chart_DataSeriesValues('Number', 'Worksheet!$D$2:$D$13', NULL, 12),
-);
+];
 
 //	Build the dataseries
 $series3 = new PHPExcel_Chart_DataSeries(
-	PHPExcel_Chart_DataSeries::TYPE_AREACHART,		// plotType
+    PHPExcel_Chart_DataSeries::TYPE_AREACHART,		// plotType
 	PHPExcel_Chart_DataSeries::GROUPING_STANDARD,	// plotGrouping
 	range(0, count($dataSeriesValues2)-1),			// plotOrder
 	$dataSeriesLabels3,								// plotLabel
@@ -160,7 +160,7 @@ $series3 = new PHPExcel_Chart_DataSeries(
 
 
 //	Set the series in the plot area
-$plotArea = new PHPExcel_Chart_PlotArea(NULL, array($series1, $series2, $series3));
+$plotArea = new PHPExcel_Chart_PlotArea(NULL, [$series1, $series2, $series3]);
 //	Set the chart legend
 $legend = new PHPExcel_Chart_Legend(PHPExcel_Chart_Legend::POSITION_RIGHT, NULL, false);
 
@@ -169,7 +169,7 @@ $title = new PHPExcel_Chart_Title('Average Weather Chart for Crete');
 
 //	Create the chart
 $chart = new PHPExcel_Chart(
-	'chart1',		// name
+    'chart1',		// name
 	$title,			// title
 	$legend,		// legend
 	$plotArea,		// plotArea
